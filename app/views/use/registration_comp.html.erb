@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<% if flash[:success] %>
+ <div class="alert alert-success" role="alert">
+ <p class="notice text-center"><%= flash[:success] %></p></div>
+<% end %>
+<html>
+  <body>
+    <div class="card-header text-center">
+      <h1>Pulse In CRM</h1>
+      <%= link_to "認証メールの再送信",new_user_confirmation_path, class: "btn btn-lg btn-primary" %>
+    </div>
+  </body>
+</html>

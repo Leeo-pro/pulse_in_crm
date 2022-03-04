@@ -9,9 +9,9 @@ module Users
     # end
 
     # POST /resource/confirmation
-    # def create
-    #   super
-    # end
+    def create
+      redirect_to registration_comp_path, flash: { success: "送られてくるメールの認証URLからアカウントの認証をしてください。" }
+    end
 
     # GET /resource/confirmation?confirmation_token=abcdef
     # def show

@@ -33,10 +33,9 @@ module Users
           # リダイレクト先を指定
           respond_with resource, location: after_sign_up_path_for(resource)
         else
-          flash[:success] = '送られてくるメールの認証URLからアカウントの認証をしてください。'
           # sessionを削除
           expire_data_after_sign_in!
-          respond_with resource, location: new_user_session_path
+          redirect_to registration_comp_path, flash: { success: "送られてくるメールの認証URLからアカウントの認証をしてください。" }
         end
       else
         # 先程のresource.saveが失敗していたら
@@ -44,7 +43,7 @@ module Users
         clean_up_passwords resource
         # validatable有効時に、パスワードの最小値を設定する
         set_minimum_password_length
-        respond_with resource
+        render :new
       end
     end
 

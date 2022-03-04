@@ -9,9 +9,10 @@ module Users
     # end
 
     # POST /resource/password
-    # def create
-    #   super
-    # end
+    def create
+      redirect_to registration_comp_path
+      flash[:success] = '送られてくるメールURLからパスワードを再設定してください。'
+    end
 
     # GET /resource/password/edit?reset_password_token=abcdef
     # def edit

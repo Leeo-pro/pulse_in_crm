@@ -15,7 +15,7 @@ class User < ApplicationRecord
   validates :name,  presence: true, length: { in: 1..10 }
   validates :age,   allow_nil: true, numericality: { greater_than_or_equal_to: 10 }
   validates :password, length: { minimum: 12 },
-              format: { with: VALID_PASSWORD_REGEX, message: 'パスワードは半角12文字以上で英大文字・小文字・数字それぞれ１文字以上含む必要があります' }
-  enum gender: { male: 0, female: 1, other: 2 }
-  enum role: { another: 0, admin: 1 }
+              format: { with: VALID_PASSWORD_REGEX }
+  enum gender: { male: 0, female: 1, other: 2 }, _prefix: true
+  enum role: { other: 0, admin: 1 }, _prefix: true
 end
