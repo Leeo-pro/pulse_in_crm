@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   devise_scope :user do
     get ':company_id/signin' => 'users/sessions#new', as: :user_login
     post ':company_id/signin' => 'users/sessions#create', as: :user_session
-    delete ':company_id/signin' => 'users/sessions#destroy', as: :destroy_user_session
     get '/cancel' => 'users/registrations#cancel', as: :cancel_user_registration
     get '/sign_up' => 'users/registrations#new', as: :new_user_registration
     post '/sign_up' => 'users/registrations#create', as: :create_user_registration
@@ -22,7 +21,7 @@ Rails.application.routes.draw do
     put '/users' => 'users/registrations#update', as: :user_registration
   end
 
-  devise_for :users,:skip => [:sessions, :registrations], controllers: {
+  devise_for :users, skip: %i[registrations sessions], controllers: {
     passwords:     'users/passwords',
     confirmations: 'users/confirmations'
   }
@@ -35,12 +34,11 @@ Rails.application.routes.draw do
   # =================================================================
 
   # 共通==============================================================
-  #トップページ
+  # トップページ
   root 'use#top'
-  #アカウント登録後ページ
+  # アカウント登録後ページ
   get 'registration_comp' => 'use#registration_comp'
   # 利用規約
   get 'use' => 'use#index'
   # =================================================================
-
 end

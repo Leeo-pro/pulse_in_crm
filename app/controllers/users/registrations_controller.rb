@@ -12,7 +12,7 @@ module Users
       @user = User.new
       @user.build_company
       email_arr = User.pluck(:email)
-      render json: email_arr
+      gon.email_arr = email_arr
     end
 
     # POST /resource
@@ -38,7 +38,7 @@ module Users
         else
           # sessionを削除
           expire_data_after_sign_in!
-          redirect_to registration_comp_path, flash: { success: "送られてくるメールの認証URLからアカウントの認証をしてください。" }
+          redirect_to registration_comp_path, flash: { success: '送られてくるメールの認証URLからアカウントの認証をしてください。' }
         end
       else
         # 先程のresource.saveが失敗していたら
@@ -85,9 +85,7 @@ module Users
       devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :password, :password_confirmation, { company_attributes: [:name] }])
     end
 
-    def email_data
-      
-    end
+    def email_data; end
 
     # If you have extra params to permit, append them to the sanitizer.
     # def configure_account_update_params

@@ -9,7 +9,7 @@
       <%= form_for(resource, as: resource_name, url: create_user_registration_path(resource_name)) do |f| %>
         <label for=="login-item">名前（フルネーム）</label>
         <span class="p-1 mb-2 bg-danger text-white">必須</span>
-        <div class="err_text1" id="err_textbox_name"></div>
+        <div class="err_text" id="err_textbox_name"></div>
         <div class="input-group mb-3">
           <%= f.text_field :name, class:"form-control", autofocus: true, id:"textbox_name",  placeholder:"例)山田 太郎", required: true %>
           <div class="input-group-append">
@@ -20,7 +20,7 @@
         </div>
         <label for="login-item">メールアドレス</label>
         <span class="p-1 mb-2 bg-danger text-white">必須</span>
-        <div class="err_text2" id="err_textbox_email"></div>
+        <div class="err_text" id="err_textbox_email"></div>
         <div class="input-group mb-3">
           <%= f.email_field :email, autocomplete: "email", class:"form-control", id:"textbox_email", placeholder:"例)sample@gmail.com", required: true %>
           <div class="input-group-append">
@@ -31,9 +31,10 @@
         </div>
         <label for=="login-item">企業名</label>
         <span class="p-1 mb-2 bg-danger text-white">必須</span>
+        <div class="err_text" id="err_textbox_company"></div>
         <%= f.fields_for :company do |c| %>
           <div class="input-group mb-3">
-            <%= c.text_field :name, class:"form-control", placeholder:"例)株式会社xx", required: true %>
+            <%= c.text_field :name, class:"form-control", id:"textbox_company", placeholder:"例)株式会社xx", required: true %>
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-building"></span>
@@ -44,9 +45,10 @@
         <label for="login-item">パスワード</label>
         <span class="p-1 mb-2 bg-danger text-white">必須</span>
         <br>※英数字大文字小文字混合で12文字以上</br>
+        <div class="err_text" id="err_textbox_password"></div>
         <div class="input-group mb-3">
 
-          <%= f.password_field :password, autocomplete: "new-password", class:"form-control", placeholder:"例)ABCDefgh1234", required: true %>
+          <%= f.password_field :password, autocomplete: "new-password", class:"form-control", id:"textbox_password", placeholder:"例)ABCDefgh1234", required: true %>
 
           <div class="input-group-append">
             <div class="input-group-text">
@@ -56,8 +58,9 @@
         </div>
         <label for="login-item">パスワード確認用</label>
         <span class="p-1 mb-2 bg-danger text-white">必須</span>
+        <div class="err_text" id="err_textbox_password_confirmation"></div>
         <div class="input-group mb-3">
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", placeholder:"例)ABCDefgh1234", required: true %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", id:"textbox_password_confirmation", placeholder:"例)ABCDefgh1234", required: true %>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>

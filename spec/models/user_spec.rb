@@ -227,7 +227,7 @@ RSpec.describe User, type: :model do
 
         it 'バリデーションのエラーが正しいこと' do
           subject.valid?
-          expect(subject.errors.full_messages).to include('パスワードパスワードは半角12文字以上で英大文字・小文字・数字それぞれ１文字以上含む必要があります')
+          expect(subject.errors.full_messages).to include('パスワードは不正な値です')
         end
       end
 
@@ -243,7 +243,7 @@ RSpec.describe User, type: :model do
 
         it 'バリデーションのエラーが正しいこと' do
           subject.valid?
-          expect(subject.errors.full_messages).to include('パスワードパスワードは半角12文字以上で英大文字・小文字・数字それぞれ１文字以上含む必要があります')
+          expect(subject.errors.full_messages).to include('パスワードは不正な値です')
         end
       end
 
@@ -259,7 +259,7 @@ RSpec.describe User, type: :model do
 
         it 'バリデーションのエラーが正しいこと' do
           subject.valid?
-          expect(subject.errors.full_messages).to include('パスワードパスワードは半角12文字以上で英大文字・小文字・数字それぞれ１文字以上含む必要があります')
+          expect(subject.errors.full_messages).to include('パスワードは不正な値です')
         end
       end
     end
