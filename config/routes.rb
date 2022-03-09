@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get ':company_id/signin' => 'users/sessions#new', as: :user_login
     post ':company_id/signin' => 'users/sessions#create', as: :user_session
+    delete '/users/sign_out' => 'users/sessions#destroy', as: :destroy_user_session
     get '/cancel' => 'users/registrations#cancel', as: :cancel_user_registration
     get '/sign_up' => 'users/registrations#new', as: :new_user_registration
     post '/sign_up' => 'users/registrations#create', as: :create_user_registration

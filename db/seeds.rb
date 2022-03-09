@@ -28,7 +28,7 @@ end
 admin = Admin.new(
   email: 'test_admin@example.com',
   name: 'テストadmin1',
-  password: 'password'
+  password: 'Password0123456789'
 )
 
 admin.skip_confirmation! # deviseの確認メールをスキップ
