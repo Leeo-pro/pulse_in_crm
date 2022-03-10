@@ -3,13 +3,17 @@
 module Users
   class RegistrationsController < Devise::RegistrationsController
     layout 'users_auth'
-    # before_action :configure_sign_up_params, only: [:create]
+    before_action :configure_sign_up_params, only: [:create]
+
     # before_action :configure_account_update_params, only: [:update]
 
     # GET /resource/sign_up
-    # def new
-    #   super
-    # end
+    def new
+      @user = User.new
+      @user.build_company
+      email_arr = User.pluck(:email)
+      gon.email_arr = email_arr
+    end
 
     # POST /resource
     def create
@@ -32,10 +36,9 @@ module Users
           # リダイレクト先を指定
           respond_with resource, location: after_sign_up_path_for(resource)
         else
-          flash[:success] = '送られてくるメールの認証URLからアカウントの認証をしてください。'
           # sessionを削除
           expire_data_after_sign_in!
-          respond_with resource, location: new_user_session_path
+          redirect_to registration_comp_path, flash: { success: '送られてくるメールの認証URLからアカウントの認証をしてください。' }
         end
       else
         # 先程のresource.saveが失敗していたら
@@ -43,7 +46,7 @@ module Users
         clean_up_passwords resource
         # validatable有効時に、パスワードの最小値を設定する
         set_minimum_password_length
-        respond_with resource
+        render :new
       end
     end
 
@@ -71,16 +74,18 @@ module Users
     #   super
     # end
 
-    # protected
+    protected
 
     def after_update_path_for(_resource)
       users_profile_path
     end
 
     # If you have extra params to permit, append them to the sanitizer.
-    # def configure_sign_up_params
-    #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-    # end
+    def configure_sign_up_params
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :password, :password_confirmation, { company_attributes: [:name] }])
+    end
+
+    def email_data; end
 
     # If you have extra params to permit, append them to the sanitizer.
     # def configure_account_update_params
