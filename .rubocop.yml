@@ -172,6 +172,7 @@ Metrics/PerceivedComplexity:
 Metrics/BlockLength:
   Exclude:
     - 'app/admin/**/*'                        # ActiveAdminのDSL
+    - 'config/routes.rb'                      # ルート
     - 'app/libs/admins/components/**/*'       # ActiveAdminのコンポーネントDSL
     - 'spec/**/*'                             # RspecのDSL
     - 'lib/tasks/helpers/test_data_helper.rb' # テストデータ定義

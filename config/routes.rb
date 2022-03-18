@@ -8,11 +8,14 @@ Rails.application.routes.draw do
     root to: 'admins#index'
   end
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
+
   # admin関連=========================================================
   devise_for :admins, controllers: {
     sessions: 'admins/sessions'
   }
+
   # =================================================================
+
   # user関連==========================================================
   devise_scope :user do
     get ':company_id/signin' => 'users/sessions#new', as: :user_login
@@ -29,11 +32,14 @@ Rails.application.routes.draw do
     passwords:     'users/passwords',
     confirmations: 'users/confirmations'
   }
+
   namespace :users do
     resources :dash_boards, only: [:index]
     resource :profile, except: %i[create new]
   end
+
   # =================================================================
+
   # 共通==============================================================
   # トップページ
   root 'use#top'
