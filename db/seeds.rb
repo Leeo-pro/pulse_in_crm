@@ -17,7 +17,7 @@
     company_id: SecureRandom.uuid,
     company_attributes:
         {
-         name: "company#{i}"
+          name: "company#{i}"
         }
   )
 

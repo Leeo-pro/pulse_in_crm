@@ -3,7 +3,8 @@
   <body>
     <div class="card-header text-center">
       <h1>Pulse In CRM</h1>
-      <%= link_to "アカウント登録",new_user_registration_path, class: "btn btn-lg btn-primary", data: {"turbolinks" => false} %>
+      <%= link_to "ログイン", user_session_path(1), class: "btn btn-lg btn-primary", data: {"turbolinks" => false} %>
+      <%= link_to "アカウント登録", new_user_registration_path, class: "btn btn-lg btn-primary", data: {"turbolinks" => false} %>
     </div>
   </body>
 </html>
