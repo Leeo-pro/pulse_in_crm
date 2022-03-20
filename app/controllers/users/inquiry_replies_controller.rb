@@ -7,6 +7,7 @@ module Users
     def create
       @inquiry_reply = InquiryReply.new(inquiry_reply_params)
       if @inquiry_reply.save
+        InquiryMailer.send_when_company_reply(current_user, @inquiry_reply).deliver
         redirect_to users_inquiry_reply_url(@inquiry_reply)
       else
         render 'new'

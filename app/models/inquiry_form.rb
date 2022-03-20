@@ -1,2 +1,0 @@
-class InquiryForm < ApplicationRecord
-end
