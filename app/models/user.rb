@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  before_create :set_uuid
-  
+  # idカラムに乱数を格納する処理
+  before_create SetUuidCallbacks.new
+
   belongs_to :company
   accepts_nested_attributes_for :company
   # Include default devise modules. Others available are:
@@ -21,9 +22,4 @@ class User < ApplicationRecord
   enum gender: { male: 0, female: 1, other: 2 }, _prefix: true
   enum role: { other: 0, admin: 1 }, _prefix: true
 
-  private
-
-  def set_uuid
-    self.id = SecureRandom.uuid
-  end
 end

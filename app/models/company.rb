@@ -1,10 +1,5 @@
 class Company < ApplicationRecord
-  before_create :set_uuid
+  # idカラムに乱数を格納する処理
+  before_create SetUuidCallbacks.new
   has_many :users
-
-  private
-
-  def set_uuid
-    self.id = SecureRandom.uuid while self.id.blank? || Company.find_by(id: self.id).present?
-  end
 end
