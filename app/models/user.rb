@@ -21,5 +21,4 @@ class User < ApplicationRecord
     format: { with: VALID_PASSWORD_REGEX }
   enum gender: { male: 0, female: 1, other: 2 }, _prefix: true
   enum role: { other: 0, admin: 1 }, _prefix: true
-
 end
