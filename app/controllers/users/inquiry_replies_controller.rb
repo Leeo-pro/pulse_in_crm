@@ -14,6 +14,7 @@ module Users
         InquiryReplyMailer.inquiry_reply(@inquiry_reply).deliver  #メール送信処理追加
         redirect_to users_inquiry_reply_url, notice: '返信メールを送信しました'
       else
+        flash.now[:alert] = '必須項目を入力、もしくは入力内容に間違いがあります'
         render :new
       end
     end
