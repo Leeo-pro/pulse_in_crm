@@ -1,5 +1,5 @@
 class Company < ApplicationRecord
-  # idカラムに乱数を格納する処理
-  before_create SetUuidCallbacks.new
+  before_create :set_uuid
+
   has_many :users
 end

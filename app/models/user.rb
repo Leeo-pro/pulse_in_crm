@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  # idカラムに乱数を格納する処理
-  before_create SetUuidCallbacks.new
+  before_create :set_uuid
 
   belongs_to :company
   accepts_nested_attributes_for :company
