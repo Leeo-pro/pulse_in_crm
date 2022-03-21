@@ -24,3 +24,4 @@ module Users
         params.require(:inquiry_reply).permit(:title, :content)
       end
   end
+end
