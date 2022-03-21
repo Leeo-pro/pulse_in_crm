@@ -1,2 +1,0 @@
-class InqueryReply < ApplicationRecord
-end
