@@ -5,7 +5,6 @@ module Users
     end
 
     def create
-      binding.pry
       @inquiry_reply = InquiryReply.new(inquiry_reply_params)
       if @inquiry_reply.save
         # メールを送信する機能。今回は仮にメソッドの変数にcurrent_user、@inquiry_replyを付与
