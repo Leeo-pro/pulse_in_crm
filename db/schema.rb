@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2022_03_19_090106) do
     t.string "title"
     t.text "content"
     t.string "to_email"
+    t.json "files"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

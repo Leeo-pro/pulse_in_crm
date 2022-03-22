@@ -5,6 +5,7 @@ module Users
     end
 
     def create
+      binding.pry
       @inquiry_reply = InquiryReply.new(inquiry_reply_params)
       if @inquiry_reply.save
         # メールを送信する機能。今回は仮にメソッドの変数にcurrent_user、@inquiry_replyを付与
@@ -22,7 +23,7 @@ module Users
     private
 
     def inquiry_reply_params
-      params.require(:inquiry_reply).permit(:title, :content).merge(to_email: current_user.email) # 仮にcurrent_userのemailを保存
+      params.require(:inquiry_reply).permit(:title, :content, {files: []}).merge(to_email: current_user.email) # 仮にcurrent_userのemailを保存
     end
   end
 end
