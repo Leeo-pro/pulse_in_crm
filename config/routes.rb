@@ -12,8 +12,8 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
 
   # user関連==========================================================
   devise_scope :user do
-    get ':company_id/signin' => 'users/sessions#new', as: :user_login
-    post ':company_id/signin' => 'users/sessions#create', as: :user_session
+    get ':company_id/sign_in' => 'users/sessions#new', as: :user_login
+    post ':company_id/sign_in' => 'users/sessions#create', as: :user_session
     delete '/users/sign_out' => 'users/sessions#destroy', as: :destroy_user_session
     get '/cancel' => 'users/registrations#cancel', as: :cancel_user_registration
     get '/sign_up' => 'users/registrations#new', as: :new_user_registration
