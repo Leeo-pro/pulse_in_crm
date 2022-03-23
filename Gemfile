@@ -40,7 +40,7 @@ gem 'rails-i18n', '~> 6.0'
 gem 'dotenv-rails'
 gem 'gon'
 
-# ファイル保村
+# ファイル保存
 gem 'carrierwave'
 
 group :development, :test do
