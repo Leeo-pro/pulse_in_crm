@@ -1,7 +1,11 @@
 module Users
   class InquiryRepliesController < Users::Base
     def new
-      @inquiry_reply = InquiryReply.new
+      # テスト用にフォームに文字を入れておきました
+      @inquiry_reply = InquiryReply.new(
+        title:   'XXXXXXX',
+        content: 'XXXXXXX'
+      )
     end
 
     def create
