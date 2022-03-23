@@ -9,6 +9,12 @@
       <!--エラーメッセージ部分-->
       <%= render 'layouts/error_messages', model: f.object %>
 
+          <%= f.label :to_email, 'メールアドレス' %><br>
+          <!--ビューに表示させている部分-->
+          <%= @inquiry_reply.to_email %>
+          <!--データの受け渡しに必要-->
+          <%= f.hidden_field :to_email, :value => @inquiry_reply.to_email %>
+
         <div class="form-group">
           <%= f.label :title, 'タイトル' %><br>
           <%= f.text_field :title, autofocus: true, placeholder:'返信メールタイトル', class:'form-control' %>
