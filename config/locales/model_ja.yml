@@ -8,6 +8,7 @@ ja:
       inquiry_reply:
         title: 返信メールのタイトル
         content: 返信本文
+        files: ファイル添付
   attributes:
     created_at: 作成日
     updated_at: 更新日
