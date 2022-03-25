@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'InquiryReplies', type: :system do
   let(:user) { create(:user) }
   let(:inquiry_reply) { create(:inquiry_reply) }
-  let(:mail) { InquiryMailer.send_when_company_reply(user, inquiry_reply).deliver }
+  let(:mail) { InquiryMailer.send_when_company_reply_mail(user, inquiry_reply).deliver }
 
   describe 'メール返信機能関連' do
     # ログインする
