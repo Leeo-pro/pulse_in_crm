@@ -11,7 +11,7 @@ class Users::InquiryRepliesController < Users::Base
     @inquiry_reply = InquiryReply.new(inquiry_reply_params)
     if @inquiry_reply.save
       # メールを送信する機能。今回は仮にメソッドの変数にcurrent_user、@inquiry_replyを付与
-      InquiryMailer.send_when_company_reply(current_user, @inquiry_reply).deliver
+      InquiryMailer.send_when_company_reply_mail(current_user, @inquiry_reply).deliver
       redirect_to users_inquiry_reply_url(@inquiry_reply)
     else
       render 'new'

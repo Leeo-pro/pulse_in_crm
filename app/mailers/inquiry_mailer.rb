@@ -1,5 +1,5 @@
 class InquiryMailer < ApplicationMailer
-  def send_when_company_reply(current_user, inquiry_reply)
+  def send_when_company_reply_mail(current_user, inquiry_reply)
     @user = current_user
     @answer = inquiry_reply.content
 
