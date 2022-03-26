@@ -1,6 +1,4 @@
-module Users
-  class InquiryRepliesController < Users::Base
-
+Users::InquiryRepliesController < Users::Base
     def show
     end
 
@@ -23,5 +21,4 @@ module Users
       def inquiry_reply_params
         params.require(:inquiry_reply).permit(:title, :content)
       end
-  end
 end
