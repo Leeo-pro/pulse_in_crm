@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    models:
+      inquiry_reply: お問い合せに対する返信内容
+    attributes:
+      inquiry_reply:
+        title: 返信メールのタイトル
+        content: 返信本文
+        files: ファイル添付
+        to_email: 返信先メールアドレス
+  attributes:
+    created_at: 作成日
+    updated_at: 更新日 
