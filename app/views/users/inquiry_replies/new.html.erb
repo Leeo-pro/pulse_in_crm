@@ -23,10 +23,6 @@
           <%= f.label :content, '返信内容' %><br>
           <%= f.text_area :content, placeholder:'返信内容を記載', class:'form-control' %>
         </div>
-        <div class="form-group">
-          <%= f.label :file, '添付ファイル' %><br>
-          <%= f.file_field :file, class:'form-control' %>
-        </div>
         <div class="d-flex justify-content-center mb-5">
           <%= f.submit 'メール送信', class:'btn btn-primary' %>
         </div>
