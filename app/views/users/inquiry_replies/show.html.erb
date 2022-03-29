@@ -12,14 +12,6 @@
           <th><%= InquiryReply.human_attribute_name(:content) %></th>
           <td><%= @inquiry_reply.content %></td>
         </tr>
-        <tr>
-          <th><%= InquiryReply.human_attribute_name(:files) %></th>
-          <td>
-            <% @inquiry_reply.files.each do |file| %>
-              <%= link_to file.identifier, file.url, target: :_blank %>
-            <% end %>
-          </td>
-        </tr>
       </tbody>
     </table>
   </div>
