@@ -13,6 +13,14 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 @import '@fortawesome/fontawesome-free/scss/v4-shims';
 
 @import 'users/dash_boards';
+
+.policy {
+    width: 325px;
+    height: 100px;
+    overflow: scroll;
+    border: #CCCCCC 1px solid;
+  }
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
