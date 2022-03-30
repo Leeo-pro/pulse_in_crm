@@ -25,6 +25,6 @@ class Users::InquiryRepliesController < Users::Base
   private
 
   def inquiry_reply_params
-    params.require(:inquiry_reply).permit(:title, :content, { files: [] }).merge(to_email: current_user.email) # 仮にcurrent_userのemailを保存
+    params.require(:inquiry_reply).permit(:title, :content).merge(to_email: current_user.email) # 仮にcurrent_userのemailを保存
   end
 end
