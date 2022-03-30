@@ -10,7 +10,7 @@
 
       <%= form_with model: @inquiry_reply, url: users_inquiry_replies_path, method: :post, local: true do |f| %>
         <!--エラーメッセージ部分-->
-        <%= render 'shared/error_massages', object: f.object %> 
+        <%= render 'users/shared/object_error_messages', object: f.object %> 
 
           <%= f.label :to_email %><br>
           <!--ビューに表示させている部分-->
