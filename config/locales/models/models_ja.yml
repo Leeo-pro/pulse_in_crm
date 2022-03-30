@@ -4,7 +4,7 @@ ja:
       inquiry_reply: お問い合せに対する返信内容
     attributes:
       inquiry_reply:
-        title: 返信メールのタイトル
+        title: 返信メールタイトル
         content: 返信本文
         files: ファイル添付
         to_email: 返信先メールアドレス

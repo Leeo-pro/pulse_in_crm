@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   namespace :users do
     resources :dash_boards, only: [:index]
     resource :profile, except: %i[create new]
-    resources :inquiry_reply, only: %i[new create show]
+    resources :inquiry_replies, only: %i[new create show]
   end
 
   # =================================================================

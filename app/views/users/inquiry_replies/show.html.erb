@@ -1,0 +1,20 @@
+<% provide(:title, 'メール返信詳細') %>
+
+<div class="card">
+  <div class="card-body table-responsive p-0">
+    <table class="table table-hover text-nowrap">
+      <tbody>
+        <tr>
+          <th><%= InquiryReply.human_attribute_name(:title) %></th>
+          <td><%= @inquiry_reply.title %></td>
+        </tr>
+        <tr>
+          <th><%= InquiryReply.human_attribute_name(:content) %></th>
+          <td><%= @inquiry_reply.content %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card-footer">
+  </div>
+</div>

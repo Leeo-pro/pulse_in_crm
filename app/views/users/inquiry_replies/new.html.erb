@@ -1,30 +1,33 @@
+<% provide(:title, "メール返信登録") %>
+<% provide(:btn_text, "登録") %>
+
 <div class="container">
   <h2 class="my-3 ml-3">
-    返信メール作成
+    メール返信登録
   </h2>
   <div class="row">
     <div class="col-sm-10 mx-auto">
 
-      <%= form_with model: @inquiry_reply, url: users_inquiry_reply_path, local: true do |f| %>
-      <!--エラーメッセージ部分-->
-      <%= render 'layouts/error_messages', model: f.object %>
+      <%= form_with model: @inquiry_reply, url: users_inquiry_replies_path, method: :post, local: true do |f| %>
+        <!--エラーメッセージ部分-->
+        <%= render 'shared/error_massages', object: f.object %> 
 
-          <%= f.label :to_email, 'メールアドレス' %><br>
+          <%= f.label :to_email %><br>
           <!--ビューに表示させている部分-->
           <%= @inquiry_reply.to_email %>
           <!--データの受け渡しに必要-->
           <%= f.hidden_field :to_email, :value => @inquiry_reply.to_email %>
 
         <div class="form-group">
-          <%= f.label :title, 'タイトル' %><br>
-          <%= f.text_field :title, autofocus: true, placeholder:'返信メールタイトル', class:'form-control' %>
+          <%= f.label :title %><br>
+          <%= f.text_field :title, autofocus: true, placeholder: InquiryReply.human_attribute_name(:title), class:'form-control' %>
         </div>
         <div class="form-group">
-          <%= f.label :content, '返信内容' %><br>
-          <%= f.text_area :content, placeholder:'返信内容を記載', class:'form-control' %>
+          <%= f.label :content %><br>
+          <%= f.text_area :content, autofocus: true, rows: 5, placeholder: InquiryReply.human_attribute_name(:content), class:'form-control' %>
         </div>
         <div class="d-flex justify-content-center mb-5">
-          <%= f.submit 'メール送信', class:'btn btn-primary' %>
+          <%= f.submit yield(:btn_text), class: "btn btn-md btn-block btn-primary" %>
         </div>
       <% end %>
     </div>
