@@ -3,6 +3,7 @@
 class User < ApplicationRecord
   before_create :set_uuid
 
+  has_one :access_authorization, dependent: :destroy
   belongs_to :company
   accepts_nested_attributes_for :company
   # Include default devise modules. Others available are:
