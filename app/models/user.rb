@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   has_one :access_authorization, dependent: :destroy
   accepts_nested_attributes_for :access_authorization
-  
+
   belongs_to :company
   accepts_nested_attributes_for :company
   # Include default devise modules. Others available are:

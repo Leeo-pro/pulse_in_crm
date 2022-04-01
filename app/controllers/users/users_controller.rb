@@ -3,8 +3,8 @@ class Users::UsersController < Users::Base
 
   def new
     @user = User.new(
-      name: "test",
-      email: "test@email.com"
+      name:  'test',
+      email: 'test@email.com'
     )
     @user.build_access_authorization
   end
@@ -31,7 +31,9 @@ class Users::UsersController < Users::Base
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation,
-    access_authorization_attributes: %i[ id inquiry_browse inqury_reply inqury_form_setting ]
+      access_authorization_attributes: %i[
+        id inquiry_browse inqury_reply inqury_form_setting
+      ]
     ).merge(company_id: current_user.company.id, role: 0)
   end
 end
