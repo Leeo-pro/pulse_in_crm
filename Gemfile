@@ -40,6 +40,9 @@ gem 'rails-i18n', '~> 6.0'
 gem 'dotenv-rails'
 gem 'gon'
 
+# ファイル保存
+gem 'carrierwave'
+
 group :development, :test do
   # ERD生成
   gem 'rails-erd'
