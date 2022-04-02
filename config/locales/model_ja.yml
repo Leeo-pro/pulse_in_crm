@@ -1,10 +1,15 @@
 ja:
   activerecord:
     models:
+      access_authorization: ユーザーのアクセス制限
       inquiry_form: お問い合わせフォーム
       inquiry: お問い合わせ内容
       inquiry_reply: お問い合せに対する返信内容
     attributes:
+      access_authorization:
+        inquiry_browse: 問い合わせ閲覧
+        inqury_reply: 問い合わせ返信
+        inqury_form_setting: 問い合わせフォーム項目設定
       inquiry_reply:
         title: 返信メールのタイトル
         content: 返信本文
