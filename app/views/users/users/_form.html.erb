@@ -15,14 +15,15 @@
 <%= f.fields_for :access_authorization do |access_auth| %>
   <div>
     <%= access_auth.check_box :inquiry_browse %>
-    <%= f.label :inquiry_browse %>
+    <%= access_auth.label :inquiry_browse %>
   </div>
   <div>
     <%= access_auth.check_box :inqury_reply %>
-    <%= f.label :inqury_reply %>
+    <%= access_auth.label :inqury_reply %>
   </div>
   <div>
     <%= access_auth.check_box :inqury_form_setting %>
-    <%= f.label :inqury_form_setting %>
+    <%= access_auth.label :inqury_form_setting %>
   </div>
 <% end %>
+<br>
