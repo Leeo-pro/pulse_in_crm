@@ -1,14 +1,13 @@
 class Users::UsersController < Users::Base
   before_action :set_user, except: %i[index new create]
   before_action :user_access_authorization, except: %i[index new create]
-  before_action :current_company
 
   def index
-    @users = @current_company.users.where(role: 0)
+    @users = User.where(company_id: current_user.company, role: 0)
   end
 
   def new
-    @user = @current_company.users.new(
+    @user = User.new(
       name:  'test',
       email: 'test@email.com'
     )
@@ -51,7 +50,7 @@ class Users::UsersController < Users::Base
       access_authorization_attributes: %i[
         id inquiry_browse inqury_reply inqury_form_setting
       ]
-    ).merge(role: 0)
+    ).merge(company_id: current_user.company.id, role: 0)
   end
 
   def set_user
@@ -60,9 +59,5 @@ class Users::UsersController < Users::Base
 
   def user_access_authorization
     @access_authorization = @user.access_authorization
-  end
-
-  def current_company
-    @current_company ||= current_user&.company
   end
 end
