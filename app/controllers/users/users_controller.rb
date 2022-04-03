@@ -1,6 +1,7 @@
 class Users::UsersController < Users::Base
   before_action :set_user, except: %i[index new create]
   before_action :user_access_authorization, except: %i[index new create]
+  before_action :user_other_access
 
   def index
     @users = User.where(company_id: current_user.company, role: 0)
