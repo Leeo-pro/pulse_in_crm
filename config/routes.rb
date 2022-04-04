@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   namespace :users do
     resources :dash_boards, only: [:index]
     resource :profile, except: %i[create new]
+    resources :privacy_policy, except: %i[show index]
   end
 
   # =================================================================
