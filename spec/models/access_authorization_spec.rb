@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe AccessAuthorization, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'アソシエーションについて' do
+    context 'userモデルとの関係' do
+      it 'N:1となっている' do
+        expect(AccessAuthorization.reflect_on_association(:user).macro).to eq :belongs_to
+      end
+    end
+  end
 end
