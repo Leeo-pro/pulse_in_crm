@@ -1,11 +1,8 @@
 class InquiryReplyMailer < ApplicationMailer
-  def inquiry_reply(inquiry_reply)
+  def inquiry_reply(current_user, inquiry_reply)
+    @user = current_user
     @inquiry_reply = inquiry_reply
-    mail(
-      from: ENV['SEND_MAIL'],  #送信元アドレス
-      to: inquiry_reply.to_email,       #送信先アドレス
-      subject: inquiry_reply.title,  #メールの件名
-      bcc: ENV['SEND_MAIL']    #BCC送信先アドレス
-    )
+
+    mail to: @user.email, subject: inquiry_reply.title
   end
 end

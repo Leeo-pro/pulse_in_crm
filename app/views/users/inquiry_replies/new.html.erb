@@ -16,7 +16,7 @@
           <!--ビューに表示させている部分-->
           <%= @inquiry_reply.to_email %>
           <!--データの受け渡しに必要-->
-          <%= f.hidden_field :to_email, :value => @inquiry_reply.to_email %>
+          <%= f.hidden_field :to_email, :value => current_user.email %> <!--データの受け渡しに必要-->
 
         <div class="form-group">
           <%= f.label :title %><br>
