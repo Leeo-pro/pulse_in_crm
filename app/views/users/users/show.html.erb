@@ -12,6 +12,18 @@
           <th><%= User.human_attribute_name(:email) %></th>
           <td><%= @user.email %></td>
         </tr>
+        <tr>
+          <th><%= AccessAuthorization.human_attribute_name(:inquiry_browse) %></th>
+          <td><%= @user.access_authorization.inquiry_browse %></td>
+        </tr>
+        <tr>
+          <th><%= AccessAuthorization.human_attribute_name(:inqury_reply) %></th>
+          <td><%= @user.access_authorization.inqury_reply %></td>
+        </tr>
+        <tr>
+          <th><%= AccessAuthorization.human_attribute_name(:inqury_form_setting) %></th>
+          <td><%= @user.access_authorization.inqury_form_setting %></td>
+        </tr>
       </tbody>
     </table>
   </div>

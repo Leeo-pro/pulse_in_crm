@@ -1,6 +1,5 @@
 class Users::UsersController < Users::Base
   before_action :set_user, except: %i[index new create]
-  before_action :user_access_authorization, except: %i[index new create]
   before_action :user_other_access
 
   def index
@@ -56,9 +55,5 @@ class Users::UsersController < Users::Base
 
   def set_user
     @user = User.find(params[:id])
-  end
-
-  def user_access_authorization
-    @access_authorization = @user.access_authorization
   end
 end
