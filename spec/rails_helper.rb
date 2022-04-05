@@ -38,6 +38,8 @@ end
 RSpec.configure do |config|
   # FactoryBotの利用をON
   config.include FactoryBot::Syntax::Methods
+  # module読み込み
+  config.include LoginModule
 
   # DatabaseCleanerの設定
   config.before(:suite) do
