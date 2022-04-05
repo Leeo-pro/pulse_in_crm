@@ -11,6 +11,8 @@ module Users
     def new
       @user = User.new
       @user.build_company
+      @company.build_privacy_policy
+      @hinagata = "<h1>プライバシーポリシー</h1>"
       email_arr = User.pluck(:email)
       gon.email_arr = email_arr
     end
