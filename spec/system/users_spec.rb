@@ -6,10 +6,9 @@ RSpec.describe 'InquiryReplies', type: :system do
 
   describe 'User機能関連' do
     # ログインする
-    before { login(user, company) }
+    before(:each) { login(user, company) }
 
     describe 'その他ユーザー新規作成' do
-      
       context 'フォーム入力値が正常' do
         it 'ユーザーの新規作成が成功' do
           visit new_users_user_path
