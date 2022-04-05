@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2022_03_26_143449) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
- 
+
   create_table "inquiry_replies", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
     t.text "content"
