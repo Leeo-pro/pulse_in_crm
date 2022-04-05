@@ -6,8 +6,9 @@
     <%= form_with model: @user, url: users_user_path, method: :patch, local: true do |f| %>
       <%= render partial: "form", locals: { f: f, user: @user } %>
       
-      <%= f.submit yield(:btn_text), class: "btn btn-md btn-block btn-primary" %>
-      
+      <%= f.submit yield(:btn_text), class: "btn btn-md btn-block btn-success" %>
+      <%= link_to "詳細画面へ", users_user_path(@user), class: "btn btn-md btn-block btn-default" %>
+      <%= link_to "一覧画面へ", users_users_path, class: "btn btn-md btn-block btn-default" %>
     <% end %>
   </div>
 </div>
