@@ -14,6 +14,7 @@ module App
     config.load_defaults 6.1
     config.i18n.default_locale = :ja
     config.time_zone = 'Asia/Tokyo'
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
 
     config.generators do |g|
       g.assets false    # <= css,javascriptファイルを作成しない
