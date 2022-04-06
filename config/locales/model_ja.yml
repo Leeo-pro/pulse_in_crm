@@ -3,8 +3,8 @@ ja:
     models:
       inquiry_form: お問い合わせフォーム
       inquiry: お問い合わせ内容
-      inquiry_input_contents: お問合せ項目入力内容
-      inquiry_reply: お問い合せに対する返信内容
+      inquiry_input_contents: お問い合わせ項目入力内容
+      inquiry_reply: お問い合わせに対する返信内容
     attributes:
       inquiry:
         status:
