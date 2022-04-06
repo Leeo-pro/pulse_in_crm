@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :inquiry_input_content do
-    content { "MyText" }
+    content { 'MyText' }
     inquiry { nil }
   end
 end
