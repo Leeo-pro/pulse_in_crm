@@ -14,15 +14,15 @@
         </tr>
         <tr>
           <th><%= AccessAuthorization.human_attribute_name(:inquiry_browse) %></th>
-          <td><%= @user.access_authorization.inquiry_browse %></td>
+          <td><%= t("access_authorization.#{@user.access_authorization.inquiry_browse}") %></td>
         </tr>
         <tr>
           <th><%= AccessAuthorization.human_attribute_name(:inqury_reply) %></th>
-          <td><%= @user.access_authorization.inqury_reply %></td>
+          <td><%= t("access_authorization.#{@user.access_authorization.inqury_reply}") %></td>
         </tr>
         <tr>
           <th><%= AccessAuthorization.human_attribute_name(:inqury_form_setting) %></th>
-          <td><%= @user.access_authorization.inqury_form_setting %></td>
+          <td><%= t("access_authorization.#{@user.access_authorization.inqury_form_setting}") %></td>
         </tr>
       </tbody>
     </table>
