@@ -3,19 +3,20 @@ class Users::UsersController < Users::Base
   before_action :user_other_access
 
   def index
-    @users = User.where(company_id: current_user.company, role: 0)
+    @users = current_company.users.where(role: 0)
   end
 
   def new
     @user = User.new(
-      name:  'test',
+      # テスト用にデータ入れてます
+      name:  'test', 
       email: 'test@email.com'
     )
     @user.build_access_authorization
   end
 
   def create
-    @user = User.new(user_params)
+    @user = current_company.users.new(user_params)
     if @user.save
       flash[:success] = "#{@user.name}の作成に成功しました"
       redirect_to users_user_url(@user)
@@ -50,7 +51,7 @@ class Users::UsersController < Users::Base
       access_authorization_attributes: %i[
         id inquiry_browse inqury_reply inqury_form_setting
       ]
-    ).merge(company_id: current_user.company.id, role: 0)
+    ).merge(role: 0)
   end
 
   def set_user
