@@ -123,18 +123,6 @@ RSpec.describe User, type: :model do
       end
     end
 
-    describe '#gender' do
-      context '存在しない場合' do
-        before :each do
-          subject.gender = nil
-        end
-
-        it 'バリデーションが通ること' do
-          expect(subject).to be_valid
-        end
-      end
-    end
-
     describe '#age' do
       context '存在しない場合' do
         before :each do
