@@ -7,11 +7,7 @@ class Users::UsersController < Users::Base
   end
 
   def new
-    @user = User.new(
-      # テスト用にデータ入れてます
-      name:  'test', 
-      email: 'test@email.com'
-    )
+    @user = User.new
     @user.build_access_authorization
   end
 
