@@ -37,9 +37,11 @@ gem 'devise-bootstrap-views', '~> 1.0'
 gem 'devise-i18n'
 gem 'rails-i18n', '~> 6.0'
 
-gem 'carrierwave', '~> 2.0'
 gem 'dotenv-rails'
 gem 'gon'
+
+# ファイル保存
+gem 'carrierwave'
 
 group :development, :test do
   # ERD生成
