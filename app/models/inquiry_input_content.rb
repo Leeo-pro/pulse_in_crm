@@ -1,0 +1,2 @@
+class InquiryInputContent < ApplicationRecord
+end
