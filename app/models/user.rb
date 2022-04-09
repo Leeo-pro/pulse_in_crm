@@ -20,6 +20,10 @@ class User < ApplicationRecord
   validates :name,  presence: true, length: { in: 1..10 }
   validates :age,   allow_nil: true, numericality: { greater_than_or_equal_to: 10 }
   validates :password, length: { minimum: 12 },
-    format: { with: VALID_PASSWORD_REGEX }
+    format: { with: VALID_PASSWORD_REGEX }, if: :password_required?
   enum role: { other: 0, admin: 1 }, _prefix: true
+
+  def password_required?
+    persisted? ? false : super
+  end
 end

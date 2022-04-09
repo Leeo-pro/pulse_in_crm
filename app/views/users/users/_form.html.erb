@@ -6,10 +6,10 @@
 <%= f.label :email %>
 <%= f.email_field :email, class: "form-control", placeholder: User.human_attribute_name(:email) %>
 <br>
-<%= f.label :password %>
-<%= f.password_field :password, class: "form-control", placeholder: User.human_attribute_name(:password_confirmation) %>
+<%= f.label :password %><span class="p-1 mb-2 text-danger">パスワードを変更する場合のみ入力して下さい。</span>
+<%= f.password_field :password, class: "form-control", placeholder: User.human_attribute_name(:password) %>
 <br>
-<%= f.label :password_confirmation %>
+<%= f.label :password_confirmation %><span class="p-1 mb-2 text-danger">パスワードを変更する場合のみ入力して下さい。</span>
 <%= f.password_field :password_confirmation, class: "form-control", placeholder: User.human_attribute_name(:password_confirmation) %>
 <br>
 <%= f.fields_for :access_authorization do |access_auth| %>
