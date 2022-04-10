@@ -30,12 +30,14 @@ Rails.application.routes.draw do
   namespace :users do
     resources :dash_boards, only: [:index]
     resource :profile, except: %i[create new]
-    resources :privacy_policy, except: %i[show index]
+    resources :privacy_policy, only: %i[create update edit]
   end
 
   # =================================================================
 
   # 共通==============================================================
+  # プライバシーポリシー表示
+  get '/privacy_policy/:id' => 'privacy_policy#show'
   # トップページ
   root 'use#top'
   # アカウント登録後ページ
