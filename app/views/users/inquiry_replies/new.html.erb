@@ -1,38 +1,3 @@
-<% provide(:title, "メール返信登録") %>
-<<<<<<< HEAD
-<% provide(:btn_text, "メール送信") %>
-
-<div class="container">
-  <h2 class="my-3 ml-3">
-    メール返信登録
-  </h2>
-  <div class="row">
-    <div class="col-sm-10 mx-auto">
-
-      <%= form_with model: @inquiry_reply, url: users_inquiry_replies_path, method: :post, local: true do |f| %>
-        <!--エラーメッセージ部分-->
-        <%= render 'users/shared/object_error_messages', object: f.object %> 
-
-          <%= f.label :to_email %><br>
-          <!--ビューに表示させている部分-->
-          <%= @inquiry_reply.to_email %>
-          <!--データの受け渡しに必要-->
-          <%= f.hidden_field :to_email, :value => current_user.email %> <!--データの受け渡しに必要-->
-
-        <div class="form-group">
-          <%= f.label :title %><br>
-          <%= f.text_field :title, autofocus: true, placeholder: InquiryReply.human_attribute_name(:title), class:'form-control' %>
-        </div>
-        <div class="form-group">
-          <%= f.label :content %><br>
-          <%= f.text_area :content, autofocus: true, rows: 5, placeholder: InquiryReply.human_attribute_name(:content), class:'form-control' %>
-        </div>
-        <div class="d-flex justify-content-center mb-5">
-          <%= f.submit yield(:btn_text), class: "btn btn-md btn-block btn-primary" %>
-        </div>
-      <% end %>
-    </div>
-=======
 <% provide(:btn_text, "登録") %>
 
 <div class="card">
@@ -48,6 +13,5 @@
       <br>
       <%= f.submit yield(:btn_text), class: "btn btn-md btn-block btn-primary" %>
     <% end %>
->>>>>>> upstream/main
   </div>
 </div>
