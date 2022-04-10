@@ -1,14 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "Users::PrivacyPolicies", type: :request do
-  describe "GET /new" do
-    it "returns http success" do
-      get "/users/privacy_policy/new"
-      expect(response).to have_http_status(:success)
-    end
-  end
 
-  describe "GET /create" do
+  describe "POST /create" do
     it "returns http success" do
       get "/users/privacy_policy/create"
       expect(response).to have_http_status(:success)
@@ -22,16 +16,9 @@ RSpec.describe "Users::PrivacyPolicies", type: :request do
     end
   end
 
-  describe "GET /update" do
+  describe "PATCH /update" do
     it "returns http success" do
       get "/users/privacy_policy/update"
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET /destroy" do
-    it "returns http success" do
-      get "/users/privacy_policy/destroy"
       expect(response).to have_http_status(:success)
     end
   end
