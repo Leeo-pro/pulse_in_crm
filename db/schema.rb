@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_06_062604) do
+ActiveRecord::Schema.define(version: 2022_04_09_123621) do
 
   create_table "admins", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(version: 2022_04_06_062604) do
     t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "company_id", null: false
+    t.index ["company_id"], name: "index_inquiries_on_company_id"
   end
 
   create_table "inquiry_input_contents", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
