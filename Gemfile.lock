@@ -321,7 +321,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.9.3)
   capybara (>= 3.26)
-  carrierwave (~> 2.0)
+  carrierwave
   database_cleaner
   devise
   devise-bootstrap-views (~> 1.0)

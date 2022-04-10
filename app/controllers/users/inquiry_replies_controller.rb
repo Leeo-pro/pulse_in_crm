@@ -1,22 +1,25 @@
 class Users::InquiryRepliesController < Users::Base
-  def show
-    @inquiry_reply = InquiryReply.find(params[:id])
-  end
-
   def new
-    @inquiry_reply = InquiryReply.new
+    # テスト用にフォームに文字を入れておきました
+    @inquiry_reply = InquiryReply.new(
+      title:   'XXXXXXX',
+      content: 'XXXXXXX'
+    )
   end
 
   def create
     @inquiry_reply = InquiryReply.new(inquiry_reply_params)
     if @inquiry_reply.save
-      InquiryReplyMailer.inquiry_reply(current_user, @inquiry_reply).deliver  # メール送信処理追加
-      redirect_to users_inquiry_reply_url(@inquiry_reply), notice: '返信メールを送信しました' and return
+      # メールを送信する機能。今回は仮にメソッドの変数にcurrent_user、@inquiry_replyを付与
+      InquiryMailer.send_when_company_reply_mail(current_user, @inquiry_reply).deliver
+      redirect_to users_inquiry_reply_url(@inquiry_reply)
     else
-      flash.now[:alert] = '必須項目を入力、もしくは入力内容に間違いがあります'
-      render :new
+      render 'new'
     end
-    redirect_to users_inquiry_reply_url(@inquiry_reply)
+  end
+
+  def show
+    @inquiry_reply = InquiryReply.find(params[:id])
   end
 
   private

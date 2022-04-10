@@ -6,8 +6,7 @@ FactoryBot.define do
     sequence(:email) { |n| "TEST#{n}@example.com" }
     password         { 'aaaaAAAA1111' }
     password_confirmation { 'aaaaAAAA1111' }
-    age              { 20 }
-    gender           { 1 }
+    age { 20 }
     association :company
   end
 end
