@@ -43,6 +43,9 @@ gem 'gon'
 # ファイル保存
 gem 'carrierwave'
 
+# enum日本語化
+gem 'enum_help'
+
 group :development, :test do
   # ERD生成
   gem 'rails-erd'
