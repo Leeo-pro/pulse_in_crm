@@ -1,0 +1,29 @@
+<%= render 'shared/error_massages', object: f.object %>
+
+<%= f.label :name %>
+<%= f.text_field :name, class: "form-control", placeholder: User.human_attribute_name(:name) %>
+<br>
+<%= f.label :email %>
+<%= f.email_field :email, class: "form-control", placeholder: User.human_attribute_name(:email) %>
+<br>
+<%= f.label :password %><span class="p-1 mb-2 text-danger">パスワードを変更する場合のみ入力して下さい。</span>
+<%= f.password_field :password, class: "form-control", placeholder: User.human_attribute_name(:password) %>
+<br>
+<%= f.label :password_confirmation %><span class="p-1 mb-2 text-danger">パスワードを変更する場合のみ入力して下さい。</span>
+<%= f.password_field :password_confirmation, class: "form-control", placeholder: User.human_attribute_name(:password_confirmation) %>
+<br>
+<%= f.fields_for :access_authorization do |access_auth| %>
+  <div>
+    <%= access_auth.check_box :inquiry_browse %>
+    <%= access_auth.label :inquiry_browse %>
+  </div>
+  <div>
+    <%= access_auth.check_box :inqury_reply %>
+    <%= access_auth.label :inqury_reply %>
+  </div>
+  <div>
+    <%= access_auth.check_box :inqury_form_setting %>
+    <%= access_auth.label :inqury_form_setting %>
+  </div>
+<% end %>
+<br>
