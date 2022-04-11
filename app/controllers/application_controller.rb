@@ -19,4 +19,28 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
     devise_parameter_sanitizer.permit :sign_in, keys: added_attrs
   end
+
+  # システム管理者か判定
+  def system_admin_user
+    unless current_user.systemadmin?
+      flash[:danger] = "アクセス権限がありません。"
+      redirect_to users_dash_boards_url
+    end
+  end
+
+  # 企業ごとの管理者か判定
+  def admin_user
+    unless current_user.admin?
+      flash[:danger] = "アクセス権限がありません。"
+      redirect_to users_dash_boards_url
+    end
+  end
+
+  # アクセスしたユーザーが現在ログインしているユーザーか確認
+  def correct_user
+    unless current_user?(@user)
+      flash[:danger] = "アクセス権限がありません。"
+      redirect_to users_dash_boards_url
+    end
+  end
 end
