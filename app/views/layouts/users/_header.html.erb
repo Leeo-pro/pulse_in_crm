@@ -1,4 +1,4 @@
- <!-- Navbar -->
+<!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
   <!-- Left navbar links -->
   <ul class="navbar-nav">
@@ -13,10 +13,10 @@
     </li>
   </ul>
 
-  <!-- Right navbar links -->
+  <%# <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
     <!-- Navbar Search -->
-    <%#<li class="nav-item">
+    <li class="nav-item">
       <a class="nav-link" data-widget="navbar-search" href="#" role="button">
         <i class="fas fa-search"></i>
       </a>
@@ -36,7 +36,6 @@
         </form>
       </div>
     </li>
-
     <!-- Messages Dropdown Menu -->
     <li class="nav-item dropdown">
       <a class="nav-link" data-toggle="dropdown" href="#">
@@ -94,28 +93,21 @@
         <div class="dropdown-divider"></div>
         <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
       </div>
-    </li>%>
-    <!-- Notifications Dropdown Menu -->    
+    </li>
+    <!-- Notifications Dropdown Menu -->
     <li class="nav-item dropdown">
       <a class="nav-link" data-toggle="dropdown" href="#">
-        <i class="fas fa-envelope"></i>
-        <span class="badge badge-warning navbar-badge"><%= @inquiry_unread_or_read_unsupporteds.count %></span>
+        <i class="far fa-bell"></i>
+        <span class="badge badge-warning navbar-badge">15</span>
       </a>
       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-        <span class="dropdown-header"><%= @inquiry_unread_or_read_unsupporteds.count %>件 未対応の問い合わせ</span>
-        <% @inquiry_unread_or_read_unsupporteds.each do |inquiry| %>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <% if inquiry.status_unread? %>
-              <i class="fas fa-envelope mr-2"></i>
-            <% else %>
-              <i class="fas fa-solid fa-envelope-open mr-2"></i>
-            <% end %>
-            <%= inquiry.status_i18n %>
-            <%#<span class="float-right text-muted text-sm">3 mins</span> %>
-          </a>
-        <% end %>
-        <%#<div class="dropdown-divider"></div>
+        <span class="dropdown-header">15 Notifications</span>
+        <div class="dropdown-divider"></div>
+        <a href="#" class="dropdown-item">
+          <i class="fas fa-envelope mr-2"></i> 4 new messages
+          <span class="float-right text-muted text-sm">3 mins</span>
+        </a>
+        <div class="dropdown-divider"></div>
         <a href="#" class="dropdown-item">
           <i class="fas fa-users mr-2"></i> 8 friend requests
           <span class="float-right text-muted text-sm">12 hours</span>
@@ -126,38 +118,10 @@
           <span class="float-right text-muted text-sm">2 days</span>
         </a>
         <div class="dropdown-divider"></div>
-        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>%>
+        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
       </div>
     </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link" data-toggle="dropdown" href="#">
-        <i class="fas fa-solid fa-envelope-open-text"></i>
-        <span class="badge badge-warning navbar-badge"><%= @inquiry_already_supporteds.count %></span>
-      </a>
-      <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-        <span class="dropdown-header"><%= @inquiry_already_supporteds.count %>件 対応中の問い合わせ</span>
-        <div class="dropdown-divider"></div>
-        <% @inquiry_already_supporteds.each do |inquiry| %>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-solid fa-envelope-open-text mr-2"></i> <%= inquiry.status_i18n %>
-            <%#<span class="float-right text-muted text-sm">3 mins</span> %>
-          </a>
-        <% end %>
-        <%#<div class="dropdown-divider"></div>
-        <a href="#" class="dropdown-item">
-          <i class="fas fa-users mr-2"></i> 8 friend requests
-          <span class="float-right text-muted text-sm">12 hours</span>
-        </a>
-        <div class="dropdown-divider"></div>
-        <a href="#" class="dropdown-item">
-          <i class="fas fa-file mr-2"></i> 3 new reports
-          <span class="float-right text-muted text-sm">2 days</span>
-        </a>
-        <div class="dropdown-divider"></div>
-        <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>%>
-      </div>
-    </li>
-    <%#<li class="nav-item">
+    <li class="nav-item">
       <a class="nav-link" data-widget="fullscreen" href="#" role="button">
         <i class="fas fa-expand-arrows-alt"></i>
       </a>
@@ -166,7 +130,46 @@
       <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
         <i class="fas fa-th-large"></i>
       </a>
-    </li>%>
-  </ul>
+    </li>
+  </ul> %>
+  <ul class="navbar-nav ml-auto">
+  <li class="nav-item dropdown">
+    <a class="nav-link" data-toggle="dropdown" href="#">
+      <i class="fas fa-envelope"></i>
+      <span class="badge badge-warning navbar-badge"><%= @inquiry_unread_or_read_unsupporteds.count %></span>
+    </a>
+    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+      <span class="dropdown-header"><%= @inquiry_unread_or_read_unsupporteds.count %>件 未対応の問い合わせ</span>
+      <% @inquiry_unread_or_read_unsupporteds.each do |inquiry| %>
+        <div class="dropdown-divider"></div>
+        <a href="#" class="dropdown-item">
+          <% if inquiry.status_unread? %>
+            <i class="fas fa-envelope mr-2"></i>
+          <% else %>
+            <i class="fas fa-solid fa-envelope-open mr-2"></i>
+          <% end %>
+          <%= inquiry.status_i18n %>
+          <%#<span class="float-right text-muted text-sm">3 mins</span> %>
+        </a>
+      <% end %>
+    </div>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link" data-toggle="dropdown" href="#">
+      <i class="fas fa-solid fa-envelope-open-text"></i>
+      <span class="badge badge-warning navbar-badge"><%= @inquiry_already_supporteds.count %></span>
+    </a>
+    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+      <span class="dropdown-header"><%= @inquiry_already_supporteds.count %>件 対応中の問い合わせ</span>
+      <div class="dropdown-divider"></div>
+      <% @inquiry_already_supporteds.each do |inquiry| %>
+        <a href="#" class="dropdown-item">
+          <i class="fas fa-solid fa-envelope-open-text mr-2"></i> <%= inquiry.status_i18n %>
+          <%#<span class="float-right text-muted text-sm">3 mins</span> %>
+        </a>
+      <% end %>
+    </div>
+  </li>
+</ul>
 </nav>
 <!-- /.navbar -->
