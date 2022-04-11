@@ -15,5 +15,4 @@ class AccessAuthorization < ApplicationRecord
   def inquiry_form_setting_access
     redirect_to users_dash_boards_path, flash: { danger: 'アクセス権限がありません' } unless current_user.access_authorization.inquiry_form_setting?
   end
-
 end
