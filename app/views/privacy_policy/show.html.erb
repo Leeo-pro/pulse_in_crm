@@ -7,7 +7,8 @@
     <div class="container-body">
         <div class="row">
             <div class="col-lg-12">
-                <%= @privacy_policy.content.html_safe %>
+                <%# = simple_format(@privacy_policy.content) %>
+                <%= safe_join(@privacy_policy.content.split("\n"),tag(:br)) %>
             </div>
         </div>
     </div>
