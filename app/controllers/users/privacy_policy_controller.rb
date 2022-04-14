@@ -10,6 +10,7 @@ class Users::PrivacyPolicyController < Users::Base
       flash[:success] = "プライバシーポリシーを更新しました"
       # TODO:  /users/iquiry_form/:id/edit へ遷移
     else
+      flash[:danger] = "■に全て入力してください。"
       render 'edit'
     end
   end
