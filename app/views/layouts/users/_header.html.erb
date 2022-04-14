@@ -146,10 +146,10 @@
             <% if inquiry.status_unread? %>
               <i class="fas fa-envelope mr-2"></i>
             <% else %>
-              <i class="fas fa-solid fa-envelope-open mr-2"></i>
+              <i class="fas fa-legular fa-envelope-open mr-2"></i>
             <% end %>
             <%= inquiry.status_i18n %>
-            <%#<span class="float-right text-muted text-sm">3 mins</span> %>
+            <span class="float-right text-muted text-sm"><%= l inquiry.updated_at, format: :short %></span>
           </a>
         <% end %>
       </div>
@@ -165,7 +165,7 @@
         <% @inquiry_already_supporteds.each do |inquiry| %>
           <a href="#" class="dropdown-item">
             <i class="fas fa-solid fa-envelope-open-text mr-2"></i> <%= inquiry.status_i18n %>
-            <%#<span class="float-right text-muted text-sm">3 mins</span> %>
+            <span class="float-right text-muted text-sm"><%= l inquiry.updated_at, format: :short %></span>
           </a>
         <% end %>
       </div>
