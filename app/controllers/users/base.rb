@@ -11,7 +11,7 @@ module Users
     end
 
     def set_current_company_inquiries_notice
-      @inquiry_unread_or_read_unsupporteds = current_company.inquiries.where(status: 0).or(current_company.inquiries.where(status: 1))
+      @inquiry_unread_or_read_unsupporteds = current_company.inquiries.where(status: 0).or(current_company.inquiries.where(status: 1)).order(updated_at: :asc)
       @inquiry_already_supporteds = current_company.inquiries.where(status: 2)
     end
 

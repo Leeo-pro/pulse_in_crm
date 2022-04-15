@@ -62,8 +62,37 @@
             <i class="nav-icon fas fa-th"></i>
             <p>
               Notion
-              <%# <span class="right badge badge-danger">New</span> %>
+              <%#<span class="right badge badge-danger">New</span>%>
             </p>
+          <% end %>
+        </li>
+        <li class="nav-item menu-open">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-solid fa-envelope-open-text"></i>
+            <p>
+              対応中
+              <span class="right badge badge-warning"><%= @inquiry_already_supporteds.count %></span>
+            </p>
+          </a>
+        </li>
+        <li class="nav-item menu-open">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-envelope"></i>
+            <p>
+              未対応
+              <span class="right badge badge-warning"><%= @inquiry_unread_or_read_unsupporteds.count %></span>
+            </p>
+          </a>
+          <% @inquiry_unread_or_read_unsupporteds.each do |inquiry| %>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p><%= inquiry.status_i18n %></p>
+                  <span class="float-right"><%= l inquiry.updated_at, format: :short %></span>
+                </a>
+              </li>
+            </ul>
           <% end %>
         </li>
       </ul>
