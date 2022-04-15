@@ -54,12 +54,6 @@ ActiveRecord::Schema.define(version: 2022_04_09_123621) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "privacy_policies", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.text "content"
-    t.string "company_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["company_id"], name: "index_privacy_policies_on_company_id"
   create_table "inquiries", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
@@ -81,6 +75,14 @@ ActiveRecord::Schema.define(version: 2022_04_09_123621) do
     t.json "files"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "privacy_policies", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.text "content"
+    t.string "company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_privacy_policies_on_company_id"
   end
 
   create_table "users", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
