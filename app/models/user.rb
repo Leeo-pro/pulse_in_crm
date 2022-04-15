@@ -3,6 +3,9 @@
 class User < ApplicationRecord
   before_create :set_uuid
 
+  has_one :access_authorization, dependent: :destroy
+  accepts_nested_attributes_for :access_authorization
+
   belongs_to :company
   accepts_nested_attributes_for :company
   # Include default devise modules. Others available are:
@@ -17,7 +20,10 @@ class User < ApplicationRecord
   validates :name,  presence: true, length: { in: 1..10 }
   validates :age,   allow_nil: true, numericality: { greater_than_or_equal_to: 10 }
   validates :password, length: { minimum: 12 },
-    format: { with: VALID_PASSWORD_REGEX }
-  enum gender: { male: 0, female: 1, other: 2 }, _prefix: true
+    format: { with: VALID_PASSWORD_REGEX }, if: :password_required?
   enum role: { other: 0, admin: 1 }, _prefix: true
+
+  def password_required?
+    persisted? ? false : super
+  end
 end

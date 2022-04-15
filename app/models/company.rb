@@ -3,4 +3,5 @@ class Company < ApplicationRecord
 
   has_many :users
   has_one :privacy_policy
+  has_many :inquiries
 end
