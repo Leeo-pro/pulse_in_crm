@@ -43,6 +43,9 @@ gem 'gon'
 # ファイル保存
 gem 'carrierwave'
 
+# マークダウンエディタ
+gem 'redcarpet'
+
 group :development, :test do
   # ERD生成
   gem 'rails-erd'

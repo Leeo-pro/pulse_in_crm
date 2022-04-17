@@ -4,7 +4,7 @@
 <div class="container-wrapper">
   <div class="container-fluid text-center">
     <%= form_with model: @privacy_policy, url: users_privacy_policy_path, local: true do |f| %>
-      <%= f.text_area :content, value: @privacy_policy.content, class: "form-control my-2", rows: "94" %>
+      <%= f.text_area :content, class: "form-control my-2", rows: "94" %>
       
       <%= f.submit yield(:btn_text), class: "btn btn-md btn-lg btn-primary" %>
       <%= link_to "戻る", "#", class: "btn btn-md btn-lg btn-default" %>
