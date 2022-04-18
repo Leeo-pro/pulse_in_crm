@@ -94,5 +94,5 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 
-  config.reload_classes_only_on_change = false
+  config.reload_classes_only_on_change = true
 end

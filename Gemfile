@@ -45,6 +45,8 @@ gem 'carrierwave'
 
 # マークダウンエディタ
 gem 'redcarpet'
+# enum日本語化
+gem 'enum_help'
 
 group :development, :test do
   # ERD生成
