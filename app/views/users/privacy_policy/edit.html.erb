@@ -1,7 +1,15 @@
-<% provide(:title, "プライバシーポリシー編集") %>
+<div class="container-fluid">
+  <div class="row">
+    <div>
+      <h1>プライバシーポリシー編集</h1>
+    </div>
+    <div>
+      <h4><%= link_to "編集方法(マークダウン記法)はこちら", "#" %></h4>
+    </div>
+  </div>
+</div>
 <% provide(:btn_text, "更新") %>
 
-<div class="container-wrapper">
   <div class="container-fluid text-center">
     <%= form_with model: @privacy_policy, url: users_privacy_policy_path, local: true do |f| %>
       <%= f.text_area :content, class: "form-control my-2", rows: "94" %>
