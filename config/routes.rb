@@ -40,6 +40,8 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
   # 共通==============================================================
   # プライバシーポリシー表示
   get '/privacy_policy/:id' => 'privacy_policy#show'
+  # マークダウン記法一覧ページ
+  get '/markdown' => 'markdown#index'
   # トップページ
   root 'use#top'
   # アカウント登録後ページ
