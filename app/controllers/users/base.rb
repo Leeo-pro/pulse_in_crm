@@ -24,24 +24,23 @@ module Users
 
     # お問い合わせ内容の閲覧制限
     def inquiry_browse_access
-      if current_user.role_other?
-        redirect_to users_dash_boards_path, flash: { danger: 'アクセス権限がありません' } unless current_user.access_authorization.inquiry_browse
+      if current_user.role_other? || current_user.access_authorization.inquiry_browse == false
+        redirect_to users_dash_boards_path, flash: { danger: 'アクセス権限がありません' }
       end
     end
 
     # お問い合わせ内容返信の制限
     def inquiry_reply_access
-      if current_user.role_other?
-        redirect_to users_dash_boards_path, flash: { danger: 'アクセス権限がありません' } unless current_user.access_authorization.inquiry_reply
+      if current_user.role_other? || current_user.access_authorization.inquiry_reply == false
+        redirect_to users_dash_boards_path, flash: { danger: 'アクセス権限がありません' }
       end
     end
 
     # お問い合わせフォーム項目設定の制限
     def inquiry_form_setting_access
-      if current_user.role_other?
-        redirect_to users_dash_boards_path, flash: { danger: 'アクセス権限がありません' } unless current_user.access_authorization.inquiry_form_setting
+      if current_user.role_other? || current_user.access_authorization.inquiry_form_setting == false
+        redirect_to users_dash_boards_path, flash: { danger: 'アクセス権限がありません' }
       end
     end
-    
   end
 end
