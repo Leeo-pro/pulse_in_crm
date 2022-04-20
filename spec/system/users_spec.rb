@@ -18,8 +18,8 @@ RSpec.describe 'InquiryReplies', type: :system do
           fill_in 'user[password_confirmation]', with: 'Password12110807'
 
           check 'user[access_authorization_attributes][inquiry_browse]'
-          check 'user[access_authorization_attributes][inqury_reply]'
-          check 'user[access_authorization_attributes][inqury_form_setting]'
+          check 'user[access_authorization_attributes][inquiry_reply]'
+          check 'user[access_authorization_attributes][inquiry_form_setting]'
 
           click_button '登録'
 
