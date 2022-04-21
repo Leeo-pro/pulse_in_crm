@@ -25,7 +25,7 @@ module Users
       resource.save
 
       # PrivacyPolicy新規作成・保存
-      create_privacy_policy!
+      create_pp!
 
       # ブロックが与えられたらresource(=User)を呼ぶ
       yield resource if block_given?
@@ -55,7 +55,7 @@ module Users
     end
 
     # PrivacyPolicy新規作成・保存
-    def create_privacy_policy!
+    def create_pp!
       @privacy_policy = PrivacyPolicy.new
       @privacy_policy.company_id = User.find_by(name: params[:user][:name]).company_id
       # Markdownでhinagata作成・表示するためインデントは無し
