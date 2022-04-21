@@ -14,8 +14,8 @@ ActiveRecord::Schema.define(version: 2022_04_09_123621) do
 
   create_table "access_authorizations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.boolean "inquiry_browse"
-    t.boolean "inqury_reply"
-    t.boolean "inqury_form_setting"
+    t.boolean "inquiry_reply"
+    t.boolean "inquiry_form_setting"
     t.string "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -9,8 +9,8 @@ ja:
     attributes:
       access_authorization:
         inquiry_browse: 問い合わせ閲覧
-        inqury_reply: 問い合わせ返信
-        inqury_form_setting: 問い合わせフォーム項目設定
+        inquiry_reply: 問い合わせ返信
+        inquiry_form_setting: 問い合わせフォーム項目設定
       inquiry:
         status:
           unread: 未読
