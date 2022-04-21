@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :privacy_policy do
-    content { "MyText" }
+    content { 'MyText' }
     company { nil }
   end
 end
