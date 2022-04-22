@@ -30,6 +30,7 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
   namespace :users do
     resources :dash_boards, only: [:index]
     resource :profile, except: %i[create new]
+    resources :privacy_policy, only: %i[create update edit]
     resources :users
     resources :inquiry_replies, only: %i[new create show]
     # thanksページ（暫定的に設定）=========================================
@@ -40,6 +41,10 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
   # =================================================================
 
   # 共通==============================================================
+  # プライバシーポリシー表示
+  get '/privacy_policy/:id' => 'privacy_policy#show', as: :privacy_policy
+  # マークダウン記法一覧ページ
+  get '/markdown' => 'markdown#index'
   # トップページ
   root 'use#top'
   # アカウント登録後ページ

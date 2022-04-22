@@ -33,3 +33,13 @@ admin = Admin.new(
 
 admin.skip_confirmation! # deviseの確認メールをスキップ
 admin.save!
+
+5.times do |i|
+
+  privacy_policy = PrivacyPolicy.new(
+    company_id: Company.find_by(name: "company#{i}").id,
+    content: "プライバシーポリシー雛形#{i}"
+  )
+
+  privacy_policy.save!
+end
