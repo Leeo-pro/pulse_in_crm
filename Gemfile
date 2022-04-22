@@ -43,6 +43,8 @@ gem 'gon'
 # ファイル保存
 gem 'carrierwave'
 
+# マークダウンエディタ
+gem 'redcarpet'
 # enum日本語化
 gem 'enum_help'
 
