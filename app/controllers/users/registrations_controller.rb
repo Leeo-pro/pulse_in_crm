@@ -54,6 +54,7 @@ module Users
       end
     end
 
+    # rubocop:disable all
     # PrivacyPolicy新規作成・保存
     def create_privacy_policy!
       @privacy_policy = PrivacyPolicy.new
@@ -148,6 +149,7 @@ Eメールアドレス：■■■■■■■■■■■
 
       @privacy_policy.save
     end
+    # rubocop:enable all
 
     # GET /resource/edit
     # def edit
