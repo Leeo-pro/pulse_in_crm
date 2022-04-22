@@ -32,6 +32,9 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
     resource :profile, except: %i[create new]
     resources :users
     resources :inquiry_replies, only: %i[new create show]
+    # thanksページ（暫定的に設定）=========================================
+    resources :thanks, except: [:index]
+    # =================================================================
   end
 
   # =================================================================

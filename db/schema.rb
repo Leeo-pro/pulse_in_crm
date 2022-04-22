@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_09_123621) do
+ActiveRecord::Schema.define(version: 2022_04_21_131243) do
 
   create_table "access_authorizations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.boolean "inquiry_browse"
@@ -73,6 +73,12 @@ ActiveRecord::Schema.define(version: 2022_04_09_123621) do
     t.text "content"
     t.string "to_email"
     t.json "files"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "thanks", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.text "thank"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

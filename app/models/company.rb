@@ -3,5 +3,5 @@ class Company < ApplicationRecord
 
   has_many :users
   has_many :inquiries
-  has_many :thanks
+  has_one :thank
 end
