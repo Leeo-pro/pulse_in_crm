@@ -1,5 +1,4 @@
 class Users::PrivacyPolicyController < Users::Base
-
   def edit
     @privacy_policy = PrivacyPolicy.find(params[:id])
   end
