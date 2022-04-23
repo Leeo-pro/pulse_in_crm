@@ -7,7 +7,6 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
   devise_for :admins, controllers: {
     sessions: 'admins/sessions'
   }
-
   # =================================================================
 
   # user関連==========================================================
@@ -34,6 +33,8 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
     resources :users
     resources :inquiry_replies, only: %i[new create show]
   end
+
+  resource :company, only: %i[show edit update]
 
   # =================================================================
 
