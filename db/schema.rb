@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_09_123621) do
+ActiveRecord::Schema.define(version: 2022_04_23_032724) do
 
   create_table "access_authorizations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.boolean "inquiry_browse"
@@ -60,6 +60,14 @@ ActiveRecord::Schema.define(version: 2022_04_09_123621) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "company_id", null: false
     t.index ["company_id"], name: "index_inquiries_on_company_id"
+  end
+
+  create_table "inquiry_forms", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "title"
+    t.string "company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_inquiry_forms_on_company_id"
   end
 
   create_table "inquiry_input_contents", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -115,5 +123,6 @@ ActiveRecord::Schema.define(version: 2022_04_09_123621) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "inquiry_forms", "companies"
   add_foreign_key "privacy_policies", "companies"
 end
