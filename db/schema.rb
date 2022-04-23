@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_23_104728) do
+ActiveRecord::Schema.define(version: 2022_04_23_110919) do
 
   create_table "access_authorizations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.boolean "inquiry_browse"
@@ -84,6 +84,8 @@ ActiveRecord::Schema.define(version: 2022_04_23_104728) do
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "inquiry_form_item_id"
+    t.index ["inquiry_form_item_id"], name: "index_inquiry_input_contents_on_inquiry_form_item_id"
   end
 
   create_table "inquiry_item_selects", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -143,6 +145,7 @@ ActiveRecord::Schema.define(version: 2022_04_23_104728) do
 
   add_foreign_key "inquiry_form_items", "inquiry_forms"
   add_foreign_key "inquiry_forms", "companies"
+  add_foreign_key "inquiry_input_contents", "inquiry_form_items"
   add_foreign_key "inquiry_item_selects", "inquiry_form_items"
   add_foreign_key "privacy_policies", "companies"
 end
