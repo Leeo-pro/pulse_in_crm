@@ -12,7 +12,23 @@ class Users::InquiryFormController < Users::Base
 
   def show; end
 
-  def edit; end
+  def edit
+    @inquiry_form = current_company.inquiry_forms.find(params[:id])
+  end
 
-  def update; end
+  def update
+    @inquiry_form = current_company.inquiry_forms.find(params[:id])
+    if @inquiry_form.update(inquiry_form_params)
+      flash[:success] = 'お問合せフォームの作成を完了しました'
+      redirect_to users_inquiry_form_url(@inquiry_form)
+    else
+      render 'edit'
+    end
+  end
+
+  private
+
+  def inquiry_form_params
+    params.require(:inquiry_form).permit(:title)
+  end
 end

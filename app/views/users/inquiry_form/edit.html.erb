@@ -1,0 +1,50 @@
+<% provide(:title, "お問合せフォーム作成") %>
+<% provide(:btn_text, "作成") %>
+
+<div class="container">
+  <%= form_with model: @inquiry_form, url: users_inquiry_form_path, method: :patch, local: true do |f| %>
+    <%= render 'shared/error_massages', object: f.object %>
+      <div class="card">
+        <div class="card-body">
+          <%= f.text_field :title, class: "form-control", placeholder: InquiryForm.human_attribute_name(:title) %>
+        </div>
+      </div>
+      <br>
+      <% @inquiry_form.inquiry_form_items.each do |inquiry_form_item| %>
+        <div class="card card-info">
+          <div class="card-body">
+            <%= f.fields_for :inquiry_form_items do |item| %>
+              <div class="row">
+                <div class="col-sm-6">
+                  <%= item.text_field :name, class: "form-control", placeholder: InquiryFormItem.human_attribute_name(:name) %>
+                </div>
+                <div class="col-sm-4">
+                  <%= item.select :type, InquiryFormItem.types.keys.to_a, { prompt: true }, { class: "form-control" } %>
+                </div>
+                <div class="col-sm-2">
+                  <%= item.number_field :order, class: "form-control", placeholder: InquiryFormItem.human_attribute_name(:order) %>
+                </div>
+              </div>
+              <br>
+              <%= f.fields_for :inquiry_input_contents do |content| %>
+                <%= content.text_field :content, class: "form-control", placeholder: InquiryInputContent.human_attribute_name(:content) %>
+              <% end %>
+              <br>
+              <%= f.fields_for :inquiry_item_selects do |select| %>
+                <%= select.text_field :name, class: "form-control", placeholder: InquiryItemSelect.human_attribute_name(:name) %>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="card-footer">
+            <%= link_to("#") do %>
+              <i class="ion ion-trash-a"></i>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <%= link_to("#") do %>
+      <i class="ion ion-plus-circled"></i>
+    <% end %>
+    <%= f.submit yield(:btn_text), class: "btn btn-md btn-block btn-primary" %>
+  <% end %>
+</div>
