@@ -27,14 +27,13 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
   }
 
   namespace :users do
-    resources :dash_boards, only: [:index]
+    resources :dash_boards, only: %i[index]
     resource :profile, except: %i[create new]
     resources :privacy_policy, only: %i[create update edit]
     resources :users
     resources :inquiry_replies, only: %i[new create show]
+    resource :company, only: %i[show edit update]
   end
-
-  resource :company, only: %i[show edit update]
 
   # =================================================================
 
