@@ -11,9 +11,9 @@
     <li class="nav-item d-none d-sm-inline-block">
       <%= link_to "ログアウト", destroy_user_session_path, class:"nav-link", method: :delete %>
     </li>
-    <!-- メール通知テスト用ボタン。運用時は要削除。 -->
+    <!-- メール通知テスト用ボタン。お問い合せ作成機能実装時に要削除。 -->
     <li class="nav-item d-none d-sm-inline-block">
-      <%= link_to "メール通知テスト", users_inquiries_path, class:"nav-link bg-info", method: :post %>
+      <%= link_to "お問い合わせデータ作成(テスト用)", users_inquiries_path, class:"nav-link bg-info", method: :post %>
     </li>
     <!-- -->
   </ul>

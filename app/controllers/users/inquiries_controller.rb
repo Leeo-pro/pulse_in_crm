@@ -1,9 +1,10 @@
 module Users
   class InquiriesController < Users::Base
-    # メール通知受信テスト用にデータを作成。運用時はロジック要修正。
+    # メール通知受信テスト用にデータを作成。
+    # お問い合せ作成機能実装時に要修正。
     def create
       if inquiry = current_company.inquiries.create
-        InquiryMailer.with(company: current_company, inquiry: inquiry)
+        InquiryMailer.with(company: inquiry.company, inquiry: inquiry)
                      .send_when_create_inquiry_notification.deliver_later
         flash[:success] = "お問い合わせデータが作成されました"
       else
