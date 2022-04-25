@@ -22,7 +22,7 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
   }
 
 .content-box {
-  margin: 100px 20px;    
+  margin: 100px 20px;
 }
 
 .form-inline {
@@ -39,7 +39,11 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 .SearchTable {
   border-collapse: separate;
   border-spacing: 50px 0px;
-} 
+}
+
+.th-width {
+  width: 160px;
+}
 
 .a {
   margin: 5px;

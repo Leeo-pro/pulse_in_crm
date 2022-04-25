@@ -1,40 +1,42 @@
-<h1>問合せ一覧</h1>
+<div class="container">
+  <h1>問合せ一覧</h1>
 
-<%= search_form_for(@q, url: users_inquiries_path) do |f| %>
-  <div class="content-box">
-    <div class="aa">
-      <%= f.label "問合せ日で検索" %>
+  <%= search_form_for(@q, url: users_inquiries_path) do |f| %>
+    <div class="content-box">
+      <div class="aa">
+        <%= f.label "問合せ日で検索" %>
+      </div>
+      <div class="form-inline">
+        <%= f.date_field :created_at_gteq, # 起点
+                      include_blank: true %>～
+
+        <%= f.date_field :created_at_lteq_end_of_day, # 終点
+                      include_blank: true %>
+      </div>
+      <br>
+      <div class="under-element">
+        <%= f.submit "検索", class: "btn btn-primary" %>
+      </div>
     </div>
-    <div class="form-inline">
-      <%= f.date_field :created_at_gteq, # 起点
-                    include_blank: true %>～
-      
-      <%= f.date_field :created_at_lteq_end_of_day, # 終点
-                    include_blank: true %>
-    </div>
-    <br>
-    <div class="under-element">
-      <%= f.submit "検索", class: "btn btn-primary" %>
-    </div>
-  </div>
-<% end %>
-<br>
-<table class="SearchTable">
-  <tbody>
-    <thead>
-      <tr>
-        <th>受信日時</th>
-        <th></th>
-      </tr>
-    </thead>
-      <% if @q.conditions.present? %>
-      <% @records.each do |record| %>
-      <tr>
-        <td><%= record.created_at.strftime("%Y年%m月%d日 %H:%M") %></td>
-        <td><%= link_to '詳細', users_inquiry_path(record) %></td>
-      </tr>
-    <% end %>
-    <% end %>
-  </tbody>
-</table>
-<%= paginate @records %>
+  <% end %>
+  <br>
+  <table class="SearchTable">
+    <tbody>
+      <thead>
+        <tr>
+          <th class="th-width">受信日時</th>
+          <th></th>
+        </tr>
+      </thead>
+        <% if @q.conditions.present? %>
+        <% @records.each do |record| %>
+        <tr>
+          <td><%= record.created_at.strftime("%Y年%m月%d日 %H:%M") %></td>
+          <td><%= link_to '詳細', users_inquiry_path(record) %></td>
+        </tr>
+      <% end %>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @records %>
+</div>
