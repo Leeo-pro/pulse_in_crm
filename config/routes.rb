@@ -32,6 +32,7 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
     resource :profile, except: %i[create new]
     resources :users
     resources :inquiry_replies, only: %i[new create show]
+    resources :inquiries, only: %i[index show destroy]
   end
 
   # =================================================================
