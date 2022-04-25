@@ -5,4 +5,11 @@ class InquiryMailer < ApplicationMailer
 
     mail to: @user.email, subject: inquiry_reply.title
   end
+
+  def send_when_create_inquiry_notification
+    @company = params[:company]
+    @inquiry = params[:inquiry]
+
+    mail to: @company.email, subject: 'お問い合わせ受信のお知らせ'
+  end
 end
