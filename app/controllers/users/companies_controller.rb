@@ -2,10 +2,10 @@
 
 module Users
   class CompaniesController < Users::Base
-  before_action :set_company
+    before_action :set_company
 
     def show; end
-    
+
     def edit; end
 
     def update
