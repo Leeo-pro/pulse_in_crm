@@ -3,4 +3,4 @@
 
 受信日時：<%= l(@inquiry.created_at, format: :long) %>
 
-ログインは<%= link_to "こちら", "#" %>
+ログインは<%= link_to "こちら", user_login_url(@company.id) %>
