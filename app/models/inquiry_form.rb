@@ -4,4 +4,6 @@ class InquiryForm < ApplicationRecord
   belongs_to :company
   has_many :inquiries, dependent: :destroy
   has_many :inquiry_form_items, dependent: :destroy
+
+  accepts_nested_attributes_for :inquiry_form_items, allow_destroy: true
 end

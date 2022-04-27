@@ -2,10 +2,11 @@ class Users::InquiryFormController < Users::Base
   def index; end
 
   def create
-    inquiry_form = current_company.inquiry_forms.create!
-    inquiry_form_item = inquiry_form.inquiry_form_items.create!
-    inquiry_form_item.inquiry_item_selects.create!
-    inquiry_form_item.inquiry_input_contents.create!
+    inquiry_form = current_company.inquiry_forms.create!(title: "test")
+    inquiry_form_item = inquiry_form.inquiry_form_items.create!(name: 'test', form_type: 0, order: 1)
+    inquiry_item_select = inquiry_form_item.inquiry_item_selects.create!(name: 'test')
+    inquiry_input_content = inquiry_form_item.inquiry_input_contents.create!(content: 'test')
+    binding.pry
 
     redirect_to edit_users_inquiry_form_url(inquiry_form)
   end
@@ -29,6 +30,21 @@ class Users::InquiryFormController < Users::Base
   private
 
   def inquiry_form_params
-    params.require(:inquiry_form).permit(:title)
+    params.require(:inquiry_form).permit(
+      :title, 
+      {
+        inquiry_form_items_attributes: [
+          :name, :type, :order, :id,
+          {
+            inquiry_item_selects_attributes: [
+              :name, :id
+            ],
+            inquiry_input_contents_attributes: [
+              :content, :id
+            ]
+          }
+        ]
+      }
+    )
   end
 end

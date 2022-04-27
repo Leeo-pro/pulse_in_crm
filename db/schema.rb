@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2022_04_23_110919) do
 
   create_table "inquiry_form_items", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
-    t.integer "type"
+    t.integer "form_type"
     t.integer "order"
     t.string "inquiry_form_id", null: false
     t.datetime "created_at", precision: 6, null: false
