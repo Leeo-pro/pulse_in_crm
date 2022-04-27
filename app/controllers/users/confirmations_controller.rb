@@ -4,9 +4,12 @@ module Users
   class ConfirmationsController < Devise::ConfirmationsController
     layout 'users_auth'
     # GET /resource/confirmation/new
-    # def new
-    #   super
-    # end
+    def new
+      super
+      @users = User.where.not(confirmed_at: nil)
+      email_arr = @users.pluck(:email)
+      gon.email_arr = email_arr
+    end
 
     # POST /resource/confirmation
     def create
