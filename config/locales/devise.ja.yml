@@ -16,3 +16,6 @@ ja:
       unlock_instructions:
         subject: "【PulseIn CRM】アカウントロックのお知らせ"
         admin_user_subject: "【%{app_name} Admin】アカウントロックのお知らせ"
+    confirmations:
+      user:
+        already_confirmed: 既に認証済みです。
