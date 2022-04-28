@@ -24,7 +24,7 @@ class Users::ThanksController < Users::Base
       flash[:success] = "サンクスページを更新しました。"
     else
       flash[:danger] = "項目を記入してください。"
-      render 'edit'
+      render :edit
     end
   end
 
