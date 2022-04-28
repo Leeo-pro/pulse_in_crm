@@ -1,4 +1,5 @@
 class Users::ThanksController < Users::Base
+  before_action :user_other_access
   before_action :set_thank, only: %i[edit update]
 
   def new
