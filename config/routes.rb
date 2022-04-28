@@ -32,9 +32,11 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
     resources :privacy_policy, only: %i[create update edit]
     resources :users
     resources :inquiry_replies, only: %i[new create show]
+    resources :thanks, except: %i[index show destroy]
     resource :company, only: %i[show edit update]
     # ↓メール通知動作確認のため設定。運用時は要修正。↓
     resource :inquiries, only: %i[create]
+    # =================================================================
   end
 
   # =================================================================
@@ -42,6 +44,8 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
   # 共通==============================================================
   # プライバシーポリシー表示
   get '/privacy_policy/:id' => 'privacy_policy#show', as: :privacy_policy
+  # サンクスページ表示
+  get '/thank/:id' => 'thanks#show', as: :thank
   # マークダウン記法一覧ページ
   get '/markdown' => 'markdown#index'
   # トップページ

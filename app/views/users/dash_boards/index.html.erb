@@ -13,6 +13,15 @@
             <%= link_to "メンバー管理", users_users_path, class: "btn btn-lg byn-block mt-5 mb-5", style: 'font-size:40px;' %>
           </div>
         </div>
+         <div class="col-lg-6">
+          <div class="card pt-5 pb-5">
+            <% if @thank.nil? %> 
+              <%= link_to "サンクスページ作成", new_users_thank_path, class: "btn btn-lg byn-block mt-5 mb-5", style: 'font-size:40px;' %>
+            <% else %>
+              <%= link_to "サンクスページ", thank_path(@thank), class: "btn btn-lg byn-block mt-5 mb-5", style: 'font-size:40px;' %>
+            <% end %>
+          </div>
+        </div>
       <% end %>
     </div>
     <!-- /.row -->
