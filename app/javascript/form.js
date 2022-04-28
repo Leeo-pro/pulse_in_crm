@@ -78,11 +78,16 @@ function check_textbox_email_resend(_textbox_email){
 	if(_textbox_email.match(/[\w\-\._]+@[\w\-\._]+\.[A-Za-z]+/)){
 		if(_email_arr.indexOf(_textbox_email) >= 0){
 			$("#err_textbox_email_resend").append('<p style="color: red;"><i class=\"fa fa-exclamation-triangle\"></i>認証済みのメールアドレスです</p>');
+			$("#confirmation_email_resend").prop("disabled", true);
+		}
+		else {
+			$("#confirmation_email_resend").prop("disabled", false);
 		}
 	}
 	else {
 		$("#err_textbox_email_resend").append('<p style="color: red;"><i class=\"fa fa-exclamation-triangle\"></i>メールアドレスが無効です</p>');
 		_result_email = false;
+		$("#confirmation_email_resend").prop("disabled", true);
 	}
 	return _result_email;
 }
