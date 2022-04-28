@@ -1,0 +1,16 @@
+<% provide(:title, "サンクスページ") %>
+<% provide(:btn_text, "戻る") %>
+
+<div class="jumbotron text-center">
+  <h1>お問い合わせが送信されました</h1>
+  <div class="card">
+    <% if @thank.nil? %>
+      <%= render partial: "default" %>
+    <% else %>
+      <%= markdown(@thank.thank).html_safe %>
+    <% end%>
+  </div>
+  <div class="card-footer">
+    <%= link_to yield(:btn_text),'javascript:history.back()', class: "btn btn-md btn-block btn-default" %>
+  </div>
+</div>
