@@ -30,7 +30,7 @@ class Users::ThanksController < Users::Base
 
   private
     def thank_params
-      params.require(:thank).permit(:thank).merge(company_id: current_user.company_id)
+      params.require(:thank).permit(:thank).merge(company_id: current_company.id)
     end
 
     def set_thank
