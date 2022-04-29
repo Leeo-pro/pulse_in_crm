@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_09_123621) do
+ActiveRecord::Schema.define(version: 2022_04_29_061553) do
 
   create_table "access_authorizations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.boolean "inquiry_browse"
-    t.boolean "inqury_reply"
-    t.boolean "inqury_form_setting"
+    t.boolean "inquiry_reply"
+    t.boolean "inquiry_form_setting"
     t.string "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -52,9 +52,10 @@ ActiveRecord::Schema.define(version: 2022_04_09_123621) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "email", null: false
   end
 
-  create_table "inquiries", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "inquiries", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -75,6 +76,14 @@ ActiveRecord::Schema.define(version: 2022_04_09_123621) do
     t.json "files"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "privacy_policies", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.text "content"
+    t.string "company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_privacy_policies_on_company_id"
   end
 
   create_table "users", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -107,4 +116,5 @@ ActiveRecord::Schema.define(version: 2022_04_09_123621) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "privacy_policies", "companies"
 end

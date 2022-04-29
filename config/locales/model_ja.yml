@@ -1,16 +1,20 @@
 ja:
   activerecord:
     models:
+      company: 企業
       access_authorization: ユーザーのアクセス制限
       inquiry_form: お問い合わせフォーム
       inquiry: お問い合わせ内容
       inquiry_input_contents: お問い合わせ項目入力内容
       inquiry_reply: お問い合わせに対する返信内容
     attributes:
+      company:
+        name: 企業名
+        email: 企業メールアドレス
       access_authorization:
         inquiry_browse: 問い合わせ閲覧
-        inqury_reply: 問い合わせ返信
-        inqury_form_setting: 問い合わせフォーム項目設定
+        inquiry_reply: 問い合わせ返信
+        inquiry_form_setting: 問い合わせフォーム項目設定
       inquiry:
         status:
           unread: 未読
