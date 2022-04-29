@@ -7,7 +7,7 @@
           <%= f.text_field :name, class: "form-control", placeholder: InquiryFormItem.human_attribute_name(:name) %>
         </div>
         <div class="col-sm-4">
-          <%= f.select :form_type, InquiryFormItem.types.keys.to_a, { prompt: true }, { class: "form-control" } %>
+          <%= f.select :form_type, InquiryFormItem.form_types.keys.map {|k| [I18n.t("enums.inquiry_form_item.form_type.#{k}"), k]}, { prompt: true }, { class: "form-control" } %>
         </div>
         <div class="col-sm-2">
           <%= f.number_field :order, class: "form-control", placeholder: InquiryFormItem.human_attribute_name(:order) %>

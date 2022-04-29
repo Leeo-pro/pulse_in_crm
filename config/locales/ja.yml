@@ -114,6 +114,12 @@ ja:
         read_unsupported: "既読未対応"
         read_supporting: "既読対応中"
         already_supported: "対応済"
+    inquiry_form_item:
+      form_type:
+        short_text: 1行(短めの文字列の入力欄)
+        long_text: 複数行(長めの文字列の入力欄)
+        selection: 選択肢
+        radio: ラジオボタン
   errors:
     format: "%{attribute}%{message}"
     messages:

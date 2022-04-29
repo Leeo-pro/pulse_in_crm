@@ -6,5 +6,5 @@ class InquiryFormItem < ApplicationRecord
   accepts_nested_attributes_for :inquiry_item_selects, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :inquiry_input_contents, allow_destroy: true
 
-  enum type: { short_text: 0, long_text: 1, selection: 2, radio: 3 }
+  enum form_type: { short_text: 0, long_text: 1, selection: 2, radio: 3 }
 end
