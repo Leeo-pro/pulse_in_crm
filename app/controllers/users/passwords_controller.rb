@@ -10,7 +10,9 @@ module Users
 
     # POST /resource/password
     def create
-      redirect_to registration_comp_path
+      self.resource = resource_class.send_reset_password_instructions(resource_params)
+
+      respond_with({}, location: registration_comp_path)
       flash[:success] = '送られてくるメールURLからパスワードを再設定してください。'
     end
 
