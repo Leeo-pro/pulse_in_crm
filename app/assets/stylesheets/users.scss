@@ -15,11 +15,39 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 @import 'users/dash_boards';
 
 .policy {
-    width: 100%;
-    height: 100px;
-    overflow: scroll;
-    border: #CCCCCC 1px solid;
+  width: 100%;
+  height: 100px;
+  overflow: scroll;
+  border: #CCCCCC 1px solid;
   }
+
+.content-box {
+  margin: 100px 20px;
+}
+
+.form-inline {
+  float: left;
+  list-style: none;
+  margin: 30px;
+  display: inline-block;
+}
+
+.under-element{
+  clear: both;
+}
+
+.SearchTable {
+  border-collapse: separate;
+  border-spacing: 50px 0px;
+}
+
+.th-width {
+  width: 180px;
+}
+
+.title {
+  margin: 5px;
+}
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files

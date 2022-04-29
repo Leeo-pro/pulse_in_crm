@@ -48,6 +48,12 @@ gem 'redcarpet'
 # enum日本語化
 gem 'enum_help'
 
+# 検索機能
+gem 'ransack'
+
+# ページネーション
+gem 'kaminari'
+
 group :development, :test do
   # ERD生成
   gem 'rails-erd'

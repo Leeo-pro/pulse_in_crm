@@ -2,17 +2,17 @@ ja:
   devise:
     mailer:
       confirmation_instructions:
-        subject: "【PulseIn CRM】ユーザー登録完了のお知らせ"
+        subject: "【Pulse In CRM】ユーザー登録完了のお知らせ"
         admin_user_subject: "【%{app_name} Admin】メールアドレス確認のお願い"
       email_changed:
-        subject: "【PulseIn CRM】メールアドレス変更完了のお知らせ"
+        subject: "【Pulse In CRM】メールアドレス変更完了のお知らせ"
         admin_user_subject: "【%{app_name} Admin】メールアドレス変更完了のお知らせ"
       reset_password_instructions:
-        subject: "【PulseIn CRM】パスワード再設定方法のお知らせ"
+        subject: "【Pulse In CRM】パスワード再設定方法のお知らせ"
         admin_user_subject: "【%{app_name} Admin】パスワード再設定方法のお知らせ"
       password_change:
-        subject: "【PulseIn CRM】パスワード変更完了のお知らせ"
+        subject: "【Pulse In CRM】パスワード変更完了のお知らせ"
         admin_user_subject: "【%{app_name} Admin】パスワード変更完了のお知らせ"
       unlock_instructions:
-        subject: "【PulseIn CRM】アカウントロックのお知らせ"
+        subject: "【Pulse In CRM】アカウントロックのお知らせ"
         admin_user_subject: "【%{app_name} Admin】アカウントロックのお知らせ"

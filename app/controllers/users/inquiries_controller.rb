@@ -1,4 +1,13 @@
 class Users::InquiriesController < Users::Base
+  def index
+    @q = InquiryInputContent.ransack(params[:q])
+    @records = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(2)
+  end
+
+  def show; end
+
+  def destroy; end
+
   # メール通知受信テスト用にデータを作成。
   # お問い合せ作成機能実装時に要修正。
   def create
