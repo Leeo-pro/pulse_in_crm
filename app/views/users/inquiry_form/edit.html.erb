@@ -4,32 +4,29 @@
 <div class="container">
   <%= form_with model: @inquiry_form, url: users_inquiry_form_path, method: :patch, local: true do |f| %>
     <%= render 'shared/error_massages', object: f.object %>
-      <div class="card">
-        <div class="card-body">
-          <%= f.text_field :title, class: "form-control", placeholder: InquiryForm.human_attribute_name(:title) %>
-        </div>
+    <div class="card">
+      <div class="card-body">
+        <!-- InquiryFormフォーム -->
+        <%= f.text_field :title, class: "form-control", placeholder: InquiryForm.human_attribute_name(:title) %>
       </div>
-      <br>
+    </div>
+    <div class="links"> 
       <!-- InquiryFormに紐づく、InquiryFormItemの追加ボタン -->
-      <div class="links"> 
-        <%= link_to_add_association '<i class="ion ion-plus-round"></i>'.html_safe,
-          f,
-          :inquiry_form_items,
-          class: 'btn btn-md btn-outline-primary',
-          partial: 'inquiry_form_item_fields',
-          data: {
-            association_insertion_method: 'after',
-          }
-        %>
-      </div>
-      <!-- InquiryFormに紐づく、InquiryFormItemの追加ボタン end -->
+      <%= link_to_add_association 'フォーム追加',
+        f,
+        :inquiry_form_items,
+        class: 'btn btn-md btn-outline-primary',
+        partial: 'inquiry_form_item_fields',
+        data: {
+          association_insertion_method: 'after',
+        }
+      %>
+    </div>
 
-      <!-- InquiryFormItem本体。 -->
-      <div id='detail-association-insertion-point'>
-        <%= f.fields_for :inquiry_form_items do |i| %>
-          <%= render partial: 'inquiry_form_item_fields', locals: { f: i } %>
-        <% end %>
-      </div>
+    <%= f.fields_for :inquiry_form_items do |i| %>
+      <!-- InquiryFormに紐づく、InquiryFormItemフォームへのpartial -->
+      <%= render partial: 'inquiry_form_item_fields', locals: { f: i } %>
+    <% end %>
     <%= f.submit yield(:btn_text), class: "btn btn-md btn-block btn-primary" %>
   <% end %>
 </div>

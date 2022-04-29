@@ -1,6 +1,7 @@
 <div class="nested-fields">
   <div class="card">
     <div class="card-header">
+      <!-- InquiryFormItemフォーム -->
       <div class="row">
         <div class="col-sm-6">
           <%= f.text_field :name, class: "form-control", placeholder: InquiryFormItem.human_attribute_name(:name) %>
@@ -13,13 +14,19 @@
         </div>
       </div>
     </div>
+
     <%= f.fields_for :inquiry_item_selects do |s| %>
+      <!-- InquiryFormItemに紐づく、InquiryItemSelectフォームへのpartial -->
       <%= render partial: 'inquiry_item_select_fields', locals: { f: s } %>
     <% end %>
+
     <div class="links">
       <div class="card-footer">
-          <%= link_to_add_association '<i class="ion ion-plus-round"></i>'.html_safe, f, :inquiry_item_selects, class: 'btn btn-sm btn-primary' %>
-          <%= link_to_remove_association '<i class="fas fa-solid fa-trash"></i>'.html_safe, f, class: 'float-right' %>
+        <!-- InquiryFormItemに紐づく、InquiryItemSelectフォームの追加ボタン -->
+        <%= link_to_add_association '<i class="ion ion-plus-round"></i>'.html_safe, f, :inquiry_item_selects, class: 'btn btn-sm btn-primary' %>
+
+        <!-- InquiryFormItemの削除ボタン -->
+        <%= link_to_remove_association '<i class="fas fa-solid fa-trash"></i>'.html_safe, f, class: 'float-right' %>
       </div>
     </div>
   </div>

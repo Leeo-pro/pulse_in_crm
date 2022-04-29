@@ -2,9 +2,11 @@
   <div class="card-body">
     <div class="row">
       <div class="col-sm-11">
+        <!-- InquiryItemSelectフォーム -->
         <%= f.text_field :name, class: "form-control", placeholder: InquiryItemSelect.human_attribute_name(:name) %>
       </div>
       <div class="col-sm-1">
+        <!-- InquiryItemSelectの削除ボタン -->
         <%= link_to_remove_association '<i class="fas fa-solid fa-trash"></i>'.html_safe, f %>
       </div>
     </div>
