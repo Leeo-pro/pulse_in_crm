@@ -47,6 +47,8 @@ gem 'carrierwave'
 gem 'redcarpet'
 # enum日本語化
 gem 'enum_help'
+# 子モデル追加・削除
+gem 'cocoon'
 
 group :development, :test do
   # ERD生成

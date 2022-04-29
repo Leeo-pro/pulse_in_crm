@@ -6,7 +6,6 @@ class Users::InquiryFormController < Users::Base
     inquiry_form_item = inquiry_form.inquiry_form_items.create!(name: 'test', form_type: 0, order: 1)
     inquiry_item_select = inquiry_form_item.inquiry_item_selects.create!(name: 'test')
     inquiry_input_content = inquiry_form_item.inquiry_input_contents.create!(content: 'test')
-    binding.pry
 
     redirect_to edit_users_inquiry_form_url(inquiry_form)
   end
@@ -34,13 +33,13 @@ class Users::InquiryFormController < Users::Base
       :title, 
       {
         inquiry_form_items_attributes: [
-          :name, :type, :order, :id,
+          :id, :name, :type, :order, :_destroy,
           {
             inquiry_item_selects_attributes: [
-              :name, :id
+              :id, :name, :_destroy
             ],
             inquiry_input_contents_attributes: [
-              :content, :id
+              :id, :content, :_destroy
             ]
           }
         ]

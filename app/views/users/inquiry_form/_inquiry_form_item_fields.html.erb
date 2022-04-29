@@ -1,0 +1,26 @@
+<div class="nested-fields">
+  <div class="card">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-sm-6">
+          <%= f.text_field :name, class: "form-control", placeholder: InquiryFormItem.human_attribute_name(:name) %>
+        </div>
+        <div class="col-sm-4">
+          <%= f.select :form_type, InquiryFormItem.types.keys.to_a, { prompt: true }, { class: "form-control" } %>
+        </div>
+        <div class="col-sm-2">
+          <%= f.number_field :order, class: "form-control", placeholder: InquiryFormItem.human_attribute_name(:order) %>
+        </div>
+      </div>
+    </div>
+    <%= f.fields_for :inquiry_item_selects do |s| %>
+      <%= render partial: 'inquiry_item_select_fields', locals: { f: s } %>
+    <% end %>
+    <div class="links">
+      <div class="card-footer">
+          <%= link_to_add_association '<i class="ion ion-plus-round"></i>'.html_safe, f, :inquiry_item_selects, class: 'btn btn-sm btn-primary' %>
+          <%= link_to_remove_association '<i class="fas fa-solid fa-trash"></i>'.html_safe, f, class: 'float-right' %>
+      </div>
+    </div>
+  </div>
+</div>
