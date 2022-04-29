@@ -1,7 +1,7 @@
 <p><%= @user.name %> 様</p>
 <p>この度はPulse In CRMにご登録いただきありがとうございます。</p>
-<br></br>
+<br>
 <p>ログインページは以下のリンクをご参照ください。</p>
 <p>表示されたページをブックマーク、またはお気に入りにご登録の上</p>
 <p>本サイトをご利用いただきますようお願い申し上げます。</p>
-<p><%= link_to t('ログイン'), confirmation_url(@resource, confirmation_token: @token, company_id: @resource.company_id) %></p>　
+<p><%= link_to t('ログイン'), confirmation_url(@resource, confirmation_token: @token, company_id: @resource.company_id) %></p>
