@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Users::PrivacyPolicies', type: :request do
   describe 'POST /create' do
-    let!(:company) { Company.create(name: 'テスト') }
+    let!(:company) { Company.create(name: 'テスト', email: 'Test@email.com') }
     let!(:privacy_policy) { PrivacyPolicy.create(content: 'テスト雛形', company_id: company.id) }
 
     it 'returns http success' do
@@ -12,7 +12,7 @@ RSpec.describe 'Users::PrivacyPolicies', type: :request do
   end
 
   describe 'GET /edit' do
-    let!(:company) { Company.create(name: 'テスト') }
+    let!(:company) { Company.create(name: 'テスト', email: 'Test@email.com') }
     let!(:privacy_policy) { PrivacyPolicy.create(content: 'テスト雛形', company_id: company.id) }
 
     it 'returns http success' do
@@ -22,7 +22,7 @@ RSpec.describe 'Users::PrivacyPolicies', type: :request do
   end
 
   describe 'PATCH /update' do
-    let!(:company) { Company.create(name: 'テスト') }
+    let!(:company) { Company.create(name: 'テスト', email: 'Test@email.com') }
     let!(:privacy_policy) { PrivacyPolicy.create(content: 'テスト雛形', company_id: company.id) }
 
     it 'returns http success' do
