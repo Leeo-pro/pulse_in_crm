@@ -1,23 +1,31 @@
 class Users::InquiryFormController < Users::Base
+  before_action :set_inquiry_form, except: %i[index create]
+
   def index; end
 
   def create
-    inquiry_form = current_company.inquiry_forms.create!(title: "test")
-    inquiry_form_item = inquiry_form.inquiry_form_items.create!(name: 'test', form_type: 0, order: 1)
-    inquiry_item_select = inquiry_form_item.inquiry_item_selects.create!(name: 'test')
-    inquiry_input_content = inquiry_form_item.inquiry_input_contents.create!(content: 'test')
-
-    redirect_to edit_users_inquiry_form_url(inquiry_form)
+    ActiveRecord::Base.transaction do
+      inquiry_form = current_company.inquiry_forms.create!(title: "Title")
+      4.times do |i|
+        inquiry_form_item = inquiry_form.inquiry_form_items.create!(name: "InquiryFormItem#{i}", form_type: i, order: i)
+        3.times do |e|
+          inquiry_item_select = inquiry_form_item.inquiry_item_selects.create!(name: "InquiryItemSelect#{e}")
+        end
+      end
+      redirect_to edit_users_inquiry_form_url(inquiry_form)
+    end
+  rescue ActiveRecord::RecordInvalid
+    flash[:danger] = '登録に失敗しました。再度作成してください。'
+    redirect_to users_inquiry_form_index_path
   end
 
-  def show; end
-
-  def edit
-    @inquiry_form = current_company.inquiry_forms.find(params[:id])
+  def show
+    @inquiry = @inquiry_form.inquiries.build
   end
+
+  def edit; end
 
   def update
-    @inquiry_form = current_company.inquiry_forms.find(params[:id])
     if @inquiry_form.update(inquiry_form_params)
       flash[:success] = 'お問合せフォームの作成を完了しました'
       redirect_to users_inquiry_form_url(@inquiry_form)
@@ -27,6 +35,10 @@ class Users::InquiryFormController < Users::Base
   end
 
   private
+
+  def set_inquiry_form
+    @inquiry_form = InquiryForm.find(params[:id])
+  end
 
   def inquiry_form_params
     params.require(:inquiry_form).permit(
