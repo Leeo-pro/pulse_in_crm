@@ -1,4 +1,3 @@
-<%= form_with model: @thank, url: users_thanks_path, method: :post, local: true do |f| %>
   <%= render 'shared/error_massages', object: f.object %>
   
   <%= f.label :thank %><span class="p-1 mb-2 text-danger">&nbsp;マークダウン形式での入力も可能です。</span>
@@ -6,4 +5,3 @@
 
   <%= f.submit yield(:btn_text), class: "btn btn-md btn-block btn-primary" %>
   <%= link_to "ダッシュボードへ", users_dash_boards_path, class: "btn btn-md btn-block btn-default" %>
-<% end %>
