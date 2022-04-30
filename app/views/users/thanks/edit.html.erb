@@ -3,6 +3,8 @@
 
 <div class="card">
   <div class="card-body">
-    <%= render partial: "form" %>
+    <%= form_with model: @thank, url: users_thank_path, method: :patch, local: true do |f| %>
+      <%= render partial: "form", locals: { f: f, thank: @thank } %>
+    <% end %>
   </div>
 </div>
