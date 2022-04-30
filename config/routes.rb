@@ -37,8 +37,10 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
     resource :inquiries, only: %i[create]
     resources :thanks, except: %i[index show destroy]
     # =================================================================
+    resources :thanks, except: %i[index show destroy]
+    resource :company, only: %i[show edit update]
+    resource :inquiries, only: %i[create]
   end
-
   # =================================================================
 
   # 共通==============================================================
