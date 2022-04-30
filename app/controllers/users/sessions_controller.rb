@@ -12,11 +12,11 @@ module Users
 
     # POST /resource/sign_in
     def create
-      self.resource = resource_class.new(sign_in_params)
+      self.resource = resource_class.new
       user = User.find_by(email: sign_in_params[:email])
       # メール認証されていなかった場合
       if user.confirmed_at.nil?
-        flash.now[:alert] = "送付された認証メールからアカウントの認証を行ってください"
+        flash.now[:alert] = '送付された認証メールからアカウントの認証を行ってください'
         render :new
       # メール認証済みの場合
       else
