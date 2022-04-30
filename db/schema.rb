@@ -86,6 +86,14 @@ ActiveRecord::Schema.define(version: 2022_04_25_074157) do
     t.index ["company_id"], name: "index_privacy_policies_on_company_id"
   end
 
+  create_table "thanks", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.text "thank"
+    t.string "company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_thanks_on_company_id"
+  end
+
   create_table "users", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -117,4 +125,5 @@ ActiveRecord::Schema.define(version: 2022_04_25_074157) do
   end
 
   add_foreign_key "privacy_policies", "companies"
+  add_foreign_key "thanks", "companies"
 end
