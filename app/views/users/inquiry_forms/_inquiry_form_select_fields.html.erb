@@ -1,0 +1,27 @@
+<div class="nested-fields">
+  <td>
+    <%= f.label :項目名：%>
+    <%= f.text_field :title %>
+    <%= f.label :並び順：%>
+    <%= f.number_field :order, in: 1..10 %>
+  </td></br>
+  <td>
+    <%= f.label :選択肢1：%>
+    <%= f.text_field :select_item1 %>
+    <%= f.label :選択肢2：%>
+    <%= f.text_field :select_item2 %>
+    <%= f.label :選択肢3：%>
+    <%= f.text_field :select_item3 %>
+    <%= f.label :選択肢4：%>
+    <%= f.text_field :select_item4 %>
+    <%= f.label :選択肢5：%>
+    <%= f.text_field :select_item5 %>
+  </td>
+  <td>
+    <%= link_to_remove_association '削除', f, class: "btn btn-danger btn-label-basic-info",
+    data: {
+    association_insertion_node: '#detail-association-insertion-point',
+    association_insertion_method: 'after'
+    }%>
+  </td>
+</div>

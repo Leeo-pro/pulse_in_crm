@@ -20,6 +20,10 @@ Rails.application.routes.draw do
     post '/sign_up' => 'users/registrations#create', as: :create_user_registration
     get '/edit' => 'users/registrations#edit', as: :edit_user_registration
     put '/users' => 'users/registrations#update', as: :user_registration
+    get ':company_id/inquiry_forms/new' => 'users/inquiry_forms#new', as: :new_inquiry_forms
+    get ':company_id/inquiry_forms/show' => 'users/inquiry_forms#show', as: :show_inquiry_forms
+    post '/inquiry_forms/create' => 'users/inquiry_forms#create', as: :create_inquiry_forms
+    post '/inquiry_forms/create_content' => 'users/inquiry_forms#create_content', as: :create_inquiry_form_contents
   end
 
   devise_for :users, skip: %i[registrations sessions], controllers: {
