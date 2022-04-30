@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_23_110919) do
+ActiveRecord::Schema.define(version: 2022_04_30_134602) do
 
   create_table "access_authorizations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.boolean "inquiry_browse"
@@ -59,7 +59,9 @@ ActiveRecord::Schema.define(version: 2022_04_23_110919) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "company_id", null: false
+    t.string "inquiry_form_id"
     t.index ["company_id"], name: "index_inquiries_on_company_id"
+    t.index ["inquiry_form_id"], name: "index_inquiries_on_inquiry_form_id"
   end
 
   create_table "inquiry_form_items", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -85,7 +87,9 @@ ActiveRecord::Schema.define(version: 2022_04_23_110919) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "inquiry_form_item_id"
+    t.bigint "inquiry_id"
     t.index ["inquiry_form_item_id"], name: "index_inquiry_input_contents_on_inquiry_form_item_id"
+    t.index ["inquiry_id"], name: "index_inquiry_input_contents_on_inquiry_id"
   end
 
   create_table "inquiry_item_selects", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -143,8 +147,10 @@ ActiveRecord::Schema.define(version: 2022_04_23_110919) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "inquiries", "inquiry_forms"
   add_foreign_key "inquiry_form_items", "inquiry_forms"
   add_foreign_key "inquiry_forms", "companies"
+  add_foreign_key "inquiry_input_contents", "inquiries"
   add_foreign_key "inquiry_input_contents", "inquiry_form_items"
   add_foreign_key "inquiry_item_selects", "inquiry_form_items"
   add_foreign_key "privacy_policies", "companies"
