@@ -1,7 +1,9 @@
 class Users::InquiryFormController < Users::Base
   before_action :set_inquiry_form, except: %i[index create]
 
-  def index; end
+  def index
+    @inquiry_forms = current_company.inquiry_forms.order(:id)
+  end
 
   def create
     ActiveRecord::Base.transaction do
