@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :inquiry_item_select do
-    name { "MyString" }
+    name { 'MyString' }
   end
 end
