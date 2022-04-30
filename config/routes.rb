@@ -32,10 +32,15 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
     resources :privacy_policy, only: %i[create update edit]
     resources :users
     resources :inquiry_replies, only: %i[new create show]
+<<<<<<< HEAD
     resources :thanks, except: %i[index show destroy]
     resource :company, only: %i[show edit update]
     # ↓メール通知動作確認のため設定。運用時は要修正。↓
     resource :inquiries, only: %i[create]
+=======
+    # thanksページ（暫定的に設定）=========================================
+    resources :thanks, except: [:index]
+>>>>>>> 9f2c40d (thanksモデル作成)
     # =================================================================
   end
 
