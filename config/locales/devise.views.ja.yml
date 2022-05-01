@@ -55,6 +55,7 @@ ja:
   users:
     confirmations:
       confirmed: メールアドレスが確認できました。
+      already_confirmed: 既に認証済みです。
       new:
         resend_confirmation_instructions: 認証メールの再送信
       send_instructions: アカウントの有効化について数分以内にメールでご連絡します。

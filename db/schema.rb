@@ -52,9 +52,10 @@ ActiveRecord::Schema.define(version: 2022_04_30_134602) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "email", null: false
   end
 
-  create_table "inquiries", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "inquiries", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -87,7 +88,7 @@ ActiveRecord::Schema.define(version: 2022_04_30_134602) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "inquiry_form_item_id"
-    t.bigint "inquiry_id"
+    t.string "inquiry_id"
     t.index ["inquiry_form_item_id"], name: "index_inquiry_input_contents_on_inquiry_form_item_id"
     t.index ["inquiry_id"], name: "index_inquiry_input_contents_on_inquiry_id"
   end
