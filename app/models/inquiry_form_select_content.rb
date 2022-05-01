@@ -1,5 +1,5 @@
 class InquiryFormSelectContent < ApplicationRecord
   before_create :set_uuid
-  has_one :inquiry_form_content
-  has_one :inquiry_form_select
+  belongs_to :inquiry_form_content
+  belongs_to :inquiry_form_select
 end
