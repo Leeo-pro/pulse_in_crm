@@ -37,6 +37,7 @@ Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
     # ↓メール通知動作確認のため設定。運用時は要修正。↓
     resource :inquiries, only: %i[create]
   end
+
   # =================================================================
 
   # 共通==============================================================
