@@ -25,6 +25,14 @@ ja:
         title: 返信メールのタイトル
         content: 返信本文
         files: 添付ファイル
+      inquiry_form:
+        title: お問い合わせの内容
+      inquiry_form_item:
+        name: お問合せ項目名
+        type: 回答の形式
+        order: 表示順
+      inquiry_item_select:
+        name: 選択肢の名称
   attributes:
     created_at: 作成日
     updated_at: 更新日

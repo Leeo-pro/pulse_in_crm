@@ -1,0 +1,28 @@
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-lg-2">
+        <div class="small-box bg-info">
+          <div class="inner">
+            <%= link_to(users_inquiry_form_index_path, method: :post) do %>
+              <p>お問合せフォーム作成</p>
+              <h1><i class="ion ion-plus-round"></i></h1>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <% @inquiry_forms.each do |inquiry_form| %>
+        <div class="col-lg-2">
+          <div class="small-box bg-info">
+            <div class="inner">
+              <%= link_to(users_inquiry_form_index_path, method: :post) do %>
+                <p><%= inquiry_form.title %></p>
+                <h1><i class="fas fa-solid fa-align-justify"></i></h1>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<% provide(:title, "お問合せフォーム") %>
+<% provide(:btn_text, "送信") %>
+
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h3><%= @inquiry_form.title %></h3>
+    </div>
+    <div class="card-body">
+      <%= form_with model: @inquiry, url: "#", method: :post, local: true do |inquiry| %>
+        <%= render 'shared/error_massages', object: inquiry.object %>
+        <!-- inquiry_form_items繰り返し -->
+        <% @inquiry_form.inquiry_form_items.each do |inquiry_form_item| %>
+          <div class= "card">
+            <div class="card-header"><%= inquiry.label inquiry_form_item.name %></div>
+            <div class= "card-body">
+              <!-- inquiryに紐づくinquiry_input_contentsのfields_for -->
+              <%= inquiry.fields_for :inquiry_input_contents do |inquiry_input_content| %>
+                <!-- form_typeが"short_text"であれば表示 -->
+                <%= inquiry_input_content.text_field :content, class: 'form-control', placeholder: inquiry_form_item.form_type_i18n if inquiry_form_item.short_text? %>
+                <!-- form_typeが"long_text"であれば表示 -->
+                <%= inquiry_input_content.text_area :content, size: "5x5", class: 'form-control', placeholder: inquiry_form_item.form_type_i18n if inquiry_form_item.long_text? %>
+                <!-- form_typeが"selection"であれば表示 -->
+                <%= inquiry_input_content.collection_select :content, inquiry_form_item.inquiry_item_selects, :id, :name,
+                  { prompt: true }, { required: true, class: "form-control" } if inquiry_form_item.selection?
+                %>
+                <!-- form_typeが"selection"であれば表示 -->
+                <% if inquiry_form_item.radio? %>
+                  <% inquiry_form_item.inquiry_item_selects.each do |inquiry_item_select| %>
+                    <%= inquiry_input_content.radio_button :content, inquiry_item_select.name %>
+                    <%= inquiry_input_content.label inquiry_item_select.name %>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+        <%= inquiry.submit yield(:btn_text), class: "btn btn-md btn-block btn-success" %>
+      <% end %>
+    </div>
+  </div>
+</div>
