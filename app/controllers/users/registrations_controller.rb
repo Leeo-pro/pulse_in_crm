@@ -21,6 +21,9 @@ module Users
       # ここでUser.new（と同等の操作）を行う
       build_resource(sign_up_params)
 
+      # 企業メールアドレスのデフォルト値として、ユーザーのメールアドレスを格納
+      resource.company.email = sign_up_params[:email]
+
       # ここでUser.save（と同等の操作）を行う
       resource.save
 

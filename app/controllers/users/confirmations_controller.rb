@@ -4,9 +4,12 @@ module Users
   class ConfirmationsController < Devise::ConfirmationsController
     layout 'users_auth'
     # GET /resource/confirmation/new
-    # def new
-    #   super
-    # end
+    def new
+      super
+      @users = User.where.not(confirmed_at: nil)
+      email_arr = @users.pluck(:email)
+      gon.email_arr = email_arr
+    end
 
     # POST /resource/confirmation
     def create
@@ -16,9 +19,24 @@ module Users
     end
 
     # GET /resource/confirmation?confirmation_token=abcdef
-    # def show
-    #   super
-    # end
+    def show
+      @users = User.where.not(confirmed_at: nil)
+      email_arr = @users.pluck(:email)
+      gon.email_arr = email_arr
+
+      self.resource = resource_class.confirm_by_token(params[:confirmation_token])
+      yield resource if block_given?
+
+      if resource.errors.empty?
+        set_flash_message!(:notice, :confirmed)
+        respond_with_navigational(resource) { redirect_to after_confirmation_path_for(resource_name, resource) }
+      else
+        set_flash_message!(:notice, :already_confirmed)
+        # rubocop:disable all
+        respond_with_navigational(resource.errors, status: :unprocessable_entity) { redirect_to after_confirmation_path_for(resource_name, resource) }
+        # rubocop:enable all
+      end
+    end
 
     # protected
 
