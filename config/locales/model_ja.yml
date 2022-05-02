@@ -25,6 +25,8 @@ ja:
         title: 返信メールのタイトル
         content: 返信本文
         files: 添付ファイル
+      thank:
+        thank: サンクスページ
   attributes:
     created_at: 作成日
     updated_at: 更新日

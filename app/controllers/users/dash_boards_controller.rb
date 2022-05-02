@@ -2,6 +2,9 @@
 
 module Users
   class DashBoardsController < Users::Base
-    def index; end
+    def index
+      # 企業独自のサンクスページを取得
+      @thank = Thank.find_by(company_id: current_user.company_id)
+    end
   end
 end
