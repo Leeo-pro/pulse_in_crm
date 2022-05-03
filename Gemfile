@@ -60,6 +60,8 @@ group :development, :test do
   gem 'letter_opener_web', '~> 1.0'
   gem 'pry-rails'
   gem 'rspec-rails'
+
+  gem "administrate"
 end
 
 group :development do

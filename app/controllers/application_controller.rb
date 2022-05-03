@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     when User
       users_dash_boards_path
     when Admin
-      admins_dash_boards_path # こちらのpathはまだ存在しないため後ほど要調整
+      supervisor_root_path
     end
   end
 

@@ -3,6 +3,14 @@
 Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 
+  namespace :supervisor do
+      resources :admins
+      resources :users
+      resources :companies
+
+      root to: "admins#index"
+  end
+
   # admin関連=========================================================
   devise_for :admins, controllers: {
     sessions: 'admins/sessions'
