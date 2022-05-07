@@ -35,14 +35,14 @@ $(function() {
 
   //セレクトボックス
   $('#inquiry_form_selects').on('cocoon:after-insert', function() {
-    check_to_hide_or_show_add_link_radio();
+    check_to_hide_or_show_add_link_select();
   });
 
   $('#inquiry_form_selects').on('cocoon:after-remove', function() {
-    check_to_hide_or_show_add_link_radio();
+    check_to_hide_or_show_add_link_select();
   });
 
-  function check_to_hide_or_show_add_link_radio() {
+  function check_to_hide_or_show_add_link_select() {
     if ($('#inquiry_form_selects .nested-fields').length >= 5) {
       $('#select_button').hide();
     } else {

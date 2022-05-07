@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
-Rails.application.routes.draw do
+Rails.application.routes.draw do # rubocop:disable Metrics/BlockLength
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 
   # admin関連=========================================================
   devise_for :admins, controllers: {
     sessions: 'admins/sessions'
   }
-
   # =================================================================
 
   # user関連==========================================================
@@ -32,13 +31,26 @@ Rails.application.routes.draw do
   }
 
   namespace :users do
-    resources :dash_boards, only: [:index]
+    resources :dash_boards, only: %i[index]
     resource :profile, except: %i[create new]
+    resources :privacy_policy, only: %i[create update edit]
+    resources :users
+    resources :inquiry_replies, only: %i[new create show]
+    resource :company, only: %i[show edit update]
+    resources :thanks, except: %i[index show destroy]
+    # ↓メール通知動作確認のため設定。運用時は要修正。↓
+    resource :inquiries, only: %i[create]
   end
 
   # =================================================================
 
   # 共通==============================================================
+  # プライバシーポリシー表示
+  get '/privacy_policy/:id' => 'privacy_policy#show', as: :privacy_policy
+  # サンクスページ表示
+  get '/thank/:id' => 'thanks#show', as: :thank
+  # マークダウン記法一覧ページ
+  get '/markdown' => 'markdown#index'
   # トップページ
   root 'use#top'
   # アカウント登録後ページ

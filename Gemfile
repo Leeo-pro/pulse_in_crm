@@ -37,9 +37,17 @@ gem 'devise-bootstrap-views', '~> 1.0'
 gem 'devise-i18n'
 gem 'rails-i18n', '~> 6.0'
 
+gem 'cocoon'
 gem 'dotenv-rails'
 gem 'gon'
-gem 'cocoon'
+
+# ファイル保存
+gem 'carrierwave'
+
+# マークダウンエディタ
+gem 'redcarpet'
+# enum日本語化
+gem 'enum_help'
 
 group :development, :test do
   # ERD生成

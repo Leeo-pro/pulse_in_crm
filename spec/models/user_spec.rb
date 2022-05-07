@@ -83,7 +83,7 @@ RSpec.describe User, type: :model do
 
         it 'バリデーションのエラーが正しいこと' do
           subject.valid?
-          expect(subject.errors.full_messages).to include('Nameを入力してください')
+          expect(subject.errors.full_messages).to include('名前を入力してください')
         end
       end
 
@@ -118,19 +118,7 @@ RSpec.describe User, type: :model do
 
         it 'バリデーションのエラーが正しいこと' do
           subject.valid?
-          expect(subject.errors.full_messages).to include('Nameは10文字以内で入力してください')
-        end
-      end
-    end
-
-    describe '#gender' do
-      context '存在しない場合' do
-        before :each do
-          subject.gender = nil
-        end
-
-        it 'バリデーションが通ること' do
-          expect(subject).to be_valid
+          expect(subject.errors.full_messages).to include('名前は10文字以内で入力してください')
         end
       end
     end

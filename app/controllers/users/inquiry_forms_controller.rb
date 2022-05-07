@@ -36,24 +36,23 @@ class Users::InquiryFormsController < ApplicationController
 
   def create_params
     params.require(:inquiry_form).permit(:title, :company_id,
-    inquiry_form_texts_attributes: [:id, :title, :inquiry_form_id, :order, :_destroy],
-    inquiry_form_text_areas_attributes: [:id, :title, :inquiry_form_id, :order, :_destroy],
-    inquiry_form_radio_boxes_attributes: [:id, :title, :select_item1, :select_item2, :select_item3, :select_item4, :select_item5, :inquiry_form_id, :order, :_destroy],
-    inquiry_form_selects_attributes: [:id, :title, :select_item1, :select_item2, :select_item3, :select_item4, :select_item5, :inquiry_form_id, :order, :_destroy]
+      inquiry_form_texts_attributes:       %i[id title inquiry_form_id order _destroy],
+      inquiry_form_text_areas_attributes:  %i[id title inquiry_form_id order _destroy],
+      inquiry_form_radio_boxes_attributes: %i[id title select_item1 select_item2 select_item3 select_item4 select_item5 inquiry_form_id order _destroy],
+      inquiry_form_selects_attributes:     %i[id title select_item1 select_item2 select_item3 select_item4 select_item5 inquiry_form_id order _destroy]
     )
   end
 
   def create_content_params
     params.require(:inquiry_form_content).permit(:inquiry_form_id,
-    inquiry_form_text_contents_attributes: [:id, :content, :inquiry_form_content_id, :inquiry_form_text_id, :_destroy],
-    inquiry_form_text_area_contents_attributes: [:id, :content, :inquiry_form_content_id, :inquiry_form_text_area_id, :_destroy],
-    inquiry_form_radio_box_contents_attributes: [:id, :content, :inquiry_form_content_id, :inquiry_form_radio_box_id, :_destroy],
-    inquiry_form_select_contents_attributes: [:id, :content, :inquiry_form_content_id, :inquiry_form_select_id, :_destroy]
+      inquiry_form_text_contents_attributes:      %i[id content inquiry_form_content_id inquiry_form_text_id _destroy],
+      inquiry_form_text_area_contents_attributes: %i[id content inquiry_form_content_id inquiry_form_text_area_id _destroy],
+      inquiry_form_radio_box_contents_attributes: %i[id content inquiry_form_content_id inquiry_form_radio_box_id _destroy],
+      inquiry_form_select_contents_attributes:    %i[id content inquiry_form_content_id inquiry_form_select_id _destroy]
     )
   end
 
   def set_user
     @user = current_user
   end
-
 end

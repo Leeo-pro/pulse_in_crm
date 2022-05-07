@@ -9,6 +9,13 @@ $(function(){
 		var _textbox_email = $(this).val();
 		check_textbox_email(_textbox_email);
 	});
+
+	// emailフォーム　再送信用
+	$("#textbox_email_resend").bind("blur", function() {
+		var _textbox_email = $(this).val();
+		check_textbox_email_resend(_textbox_email);
+	});
+
 	// 企業名フォーム
 	$("#textbox_company").bind("blur", function() {
 		var _textbox_company = $(this).val();
@@ -57,6 +64,30 @@ function check_textbox_email(_textbox_email){
 	else {
 		$("#err_textbox_email").append('<p style="color: red;"><i class=\"fa fa-exclamation-triangle\"></i>メールアドレスが無効です</p>');
 		_result_email = false;
+	}
+	return _result_email;
+}
+
+// emailフォーム　再送信用
+function check_textbox_email_resend(_textbox_email){
+	$("#err_textbox_email_resend p").remove();
+	var _result_email = true;
+	var _textbox_email = $.trim(_textbox_email);
+	var _email_arr = gon.email_arr;
+
+	if(_textbox_email.match(/[\w\-\._]+@[\w\-\._]+\.[A-Za-z]+/)){
+		if(_email_arr.indexOf(_textbox_email) >= 0){
+			$("#err_textbox_email_resend").append('<p style="color: red;"><i class=\"fa fa-exclamation-triangle\"></i>認証済みのメールアドレスです</p>');
+			$("#confirmation_email_resend").prop("disabled", true);
+		}
+		else {
+			$("#confirmation_email_resend").prop("disabled", false);
+		}
+	}
+	else {
+		$("#err_textbox_email_resend").append('<p style="color: red;"><i class=\"fa fa-exclamation-triangle\"></i>メールアドレスが無効です</p>');
+		_result_email = false;
+		$("#confirmation_email_resend").prop("disabled", true);
 	}
 	return _result_email;
 }

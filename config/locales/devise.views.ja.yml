@@ -2,6 +2,7 @@ ja:
   activerecord:
     attributes:
       user:
+        name: 名前
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン
         confirmed_at: パスワード確認時刻
@@ -54,6 +55,7 @@ ja:
   users:
     confirmations:
       confirmed: メールアドレスが確認できました。
+      already_confirmed: 既に認証済みです。
       new:
         resend_confirmation_instructions: 認証メールの再送信
       send_instructions: アカウントの有効化について数分以内にメールでご連絡します。
@@ -73,7 +75,7 @@ ja:
         action: メールアドレスの確認
         greeting: "%{recipient}様"
         instruction: 以下のリンクをクリックし、メールアドレスの確認手続を完了させてください。
-        subject: メールアドレス確認メール
+        subject: アカウント認証メール
       email_changed:
         greeting: こんにちは、%{recipient}様。
         message: メールアドレスの（%{email}）変更が完了したため、メールを送信しています。
@@ -177,7 +179,7 @@ ja:
         action: メールアドレスの確認
         greeting: "%{recipient}様"
         instruction: 以下のリンクをクリックし、メールアドレスの確認手続を完了させてください。
-        subject: メールアドレス確認メール
+        subject: アカウント認証メール
       email_changed:
         greeting: こんにちは、%{recipient}様。
         message: メールアドレスの（%{email}）変更が完了したため、メールを送信しています。
@@ -261,7 +263,7 @@ ja:
       unlocked: アカウントをロック解除しました。
   errors:
     messages:
-      already_confirmed: は既に登録済みです。ログインしてください。
+      already_confirmed: は既に認証済みです。ログインしてください。
       confirmation_period_expired: の期限が切れました。%{period} までに確認する必要があります。 新しくリクエストしてください。
       expired: の有効期限が切れました。新しくリクエストしてください。
       not_found: は見つかりませんでした。

@@ -7,8 +7,9 @@
       <p class="login-box-msg">認証メールの再送信</p>
 
       <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+        <div class="err_text" id="err_textbox_email_resend"></div>
         <div class="input-group mb-3">
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder:"メールアドレス", required: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+          <%= f.email_field :email, autofocus: true, id:"textbox_email_resend", autocomplete: "email", class:"form-control", placeholder:"メールアドレス", required: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -17,7 +18,7 @@
         </div>
         <div class="row">
           <div>
-            <%= f.submit t('.resend_confirmation_instructions'), class:"btn btn-primary btn-block" %>
+            <%= f.submit t('.resend_confirmation_instructions'), class:"btn btn-primary btn-block", id:"confirmation_email_resend", disabled: false %>
           </div>
         </div>
       <% end %>

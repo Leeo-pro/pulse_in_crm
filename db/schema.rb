@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_16_093518) do
+ActiveRecord::Schema.define(version: 2022_04_25_074157) do
+
+  create_table "access_authorizations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.boolean "inquiry_browse"
+    t.boolean "inquiry_reply"
+    t.boolean "inquiry_form_setting"
+    t.string "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "admins", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -43,6 +52,15 @@ ActiveRecord::Schema.define(version: 2022_04_16_093518) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "email", null: false
+  end
+
+  create_table "inquiries", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "company_id", null: false
+    t.index ["company_id"], name: "index_inquiries_on_company_id"
   end
 
   create_table "inquiry_form_contents", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -132,6 +150,37 @@ ActiveRecord::Schema.define(version: 2022_04_16_093518) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "inquiry_input_contents", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "inquiry_replies", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.string "to_email"
+    t.json "files"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "privacy_policies", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.text "content"
+    t.string "company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_privacy_policies_on_company_id"
+  end
+
+  create_table "thanks", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.text "thank"
+    t.string "company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_thanks_on_company_id"
+  end
+
   create_table "users", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -154,7 +203,6 @@ ActiveRecord::Schema.define(version: 2022_04_16_093518) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
     t.integer "age"
-    t.integer "gender"
     t.string "company_id"
     t.integer "role", default: 1
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
@@ -163,4 +211,6 @@ ActiveRecord::Schema.define(version: 2022_04_16_093518) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "privacy_policies", "companies"
+  add_foreign_key "thanks", "companies"
 end

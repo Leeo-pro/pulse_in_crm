@@ -72,6 +72,43 @@
             </p>
           <% end %>
         </li>
+        <li class="nav-item menu-open">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-solid fa-envelope-open-text"></i>
+            <p>
+              対応中
+              <span class="right badge badge-warning"><%= @read_supportings.count %></span>
+            </p>
+          </a>
+        </li>
+        <li class="nav-item menu-open">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-envelope"></i>
+            <p>
+              未対応
+              <span class="right badge badge-warning"><%= @unread_or_read_unsupporteds.count %></span>
+            </p>
+          </a>
+          <% @unread_or_read_unsupporteds.each do |unread_or_read_unsupported| %>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p><%= unread_or_read_unsupported.status_i18n %></p>
+                  <span class="float-right"><%= l unread_or_read_unsupported.updated_at, format: :short %></span>
+                </a>
+              </li>
+            </ul>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to users_company_path, class:"nav-link" do %>
+            <i class="nav-icon fa fa-cog" aria-hidden="true"></i>
+            <p>
+              メール通知設定
+            </p>
+          <% end %>
+        </li>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

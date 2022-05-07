@@ -11,9 +11,27 @@ module Users
     # end
 
     # POST /resource/sign_in
-    # def create
-    #   super
-    # end
+    def create
+      self.resource = resource_class.new
+      user = User.find_by(email: sign_in_params[:email])
+      if user.present?
+        # メール認証されていなかった場合
+        if user.confirmed_at.nil?
+          flash.now[:alert] = '送付された認証メールからアカウントの認証を行ってください'
+          render :new
+        # メール認証済みの場合
+        else
+          self.resource = warden.authenticate!(auth_options)
+          set_flash_message!(:notice, :signed_in)
+          sign_in(resource_name, resource)
+          yield resource if block_given?
+          respond_with resource, location: after_sign_in_path_for(resource)
+        end
+      else
+        flash[:alert] = 'アカウント情報が登録されていません'
+        redirect_to new_user_registration_path
+      end
+    end
 
     # DELETE /resource/sign_out
     # def destroy
