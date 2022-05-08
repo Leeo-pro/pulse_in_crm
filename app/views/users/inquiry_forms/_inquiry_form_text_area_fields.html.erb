@@ -1,0 +1,15 @@
+<div class="nested-fields">
+  <td>
+    <%= f.label :項目名：%>
+    <%= f.text_field :title %>
+    <%= f.label :並び順：%>
+    <%= f.number_field :order, in: 1..10 %>
+  </td>
+  <td>
+    <%= link_to_remove_association '削除', f, class: "btn btn-danger btn-label-basic-info",
+    data: {
+    association_insertion_node: '#detail-association-insertion-point',
+    association_insertion_method: 'after'
+    }%>
+  </td>
+</div>

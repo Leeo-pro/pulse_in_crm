@@ -9,6 +9,8 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "jquery"
 import "form.js" 
+import "inquiry_form.js" 
+import "cocoon"
 
 Rails.start()
 Turbolinks.start()

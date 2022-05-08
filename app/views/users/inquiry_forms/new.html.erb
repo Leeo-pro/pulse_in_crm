@@ -1,0 +1,67 @@
+<head>
+  <h2>お問い合わせフォーム項目設定</h2>
+</head>
+<div>
+  <%= form_with(model: @inquiry_form, url: create_inquiry_forms_path, method: :post, local: true) do |f| %>
+    <div class="field">
+      <%= f.label :お問い合わせフォームタイトル：%>
+      <%= f.text_field :title %>
+    </div>
+    <label>入力フォーム種類：テキスト</label></br>
+    <label>例)名前(項目名)</label>
+    <input id="name" type="text" disabled>
+    <div id="inquiry_form_texts">
+        <%= f.fields_for :inquiry_form_texts do |t| %>
+          <%= render "inquiry_form_text_fields", f: t %>
+        <% end %>
+      <div id="text_button">
+        <%= link_to_add_association "追加ボタン", f, :inquiry_form_texts, class: "btn btn-success" %>
+      </div>
+    </div>
+    <label>入力フォーム種類：ラジオボタン</label></br>
+    <div>
+      <label>例) 性別(項目名)</label>
+      <input type="radio" disabled>
+      <label>男(選択肢1)</label>
+      <input type="radio" disabled>
+      <label>女(選択肢2)</label>
+    </div>
+    <div id="inquiry_form_radio_boxes">
+      <%= f.fields_for :inquiry_form_radio_boxes do |t| %>
+        <%= render "inquiry_form_radio_box_fields", f: t %>
+      <% end %>
+      <div id="radio_button">
+        <%= link_to_add_association "追加ボタン", f, :inquiry_form_radio_boxes, class: "btn btn-success" %>
+      </div>
+    </div>
+    <label>入力フォーム種類：選択</label></br>
+    <div>
+      <label>例) 職種(項目名)</label>
+      <select>
+        <option>学生(選択肢1)</option>
+        <option>会社員(選択肢2)</option>
+        <option>自営業(選択肢3)</option>
+      </select>
+    </div>
+    <div id="inquiry_form_selects">
+      <%= f.fields_for :inquiry_form_selects do |t| %>
+        <%= render "inquiry_form_select_fields", f: t %>
+      <% end %>
+      <div id="select_button">
+        <%= link_to_add_association "追加ボタン", f, :inquiry_form_selects, class: "btn btn-success" %>
+      </div>
+    </div>
+    <label>入力フォーム種類：テキストエリア</label></br>
+    <label>例)製品の感想(項目名)</label></br>
+    <textarea disabled></textarea>
+    <div id="inquiry_form_text_areas">
+      <%= f.fields_for :inquiry_form_text_areas do |t| %>
+        <%= render "inquiry_form_text_area_fields", f: t %>
+      <% end %>
+      <div id="area_button">
+        <%= link_to_add_association "追加ボタン", f, :inquiry_form_text_areas, class: "btn btn-success" %>
+      </div>
+    </div>
+      <%= f.submit "保存", class: "btn btn-primary" %>
+  <% end %>
+</div>

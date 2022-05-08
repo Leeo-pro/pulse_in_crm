@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <h2><%= @inquiry_form.title %></h2>
+  </head>
+  <%= form_with(model: @inquiry_form_content, url: create_inquiry_form_contents_path, method: :post, local: true) do |f| %>
+    <div class="flexbox">
+      <%= f.fields_for :inquiry_form_text_contents, @inquiry_form_content.inquiry_form_text_contents.build do |t| %>
+        <% @inquiry_form_texts.each do |text| %>
+          <div class="order-<%= text.order %>">
+            <%= text.title %>
+            <%= t.text_field :content %>
+            <%= t.hidden_field :inquiry_form_text_id, :value => text.id %>
+          </div>
+        <% end %>
+      <% end %>
+      <%= f.fields_for :inquiry_form_text_area_contents, @inquiry_form_content.inquiry_form_text_area_contents.build do |t| %>
+        <% @inquiry_form_text_areas.each do |area| %>
+          <div class="order-<%= area.order %>">
+            <%= area.title %>
+            <%= t.text_area :content %>
+            <%= t.hidden_field :inquiry_form_text_area_id, :value => area.id %>
+          </div>
+        <% end %>
+      <% end %>
+      <%= f.fields_for :inquiry_form_select_contents, @inquiry_form_content.inquiry_form_select_contents.build do |t| %>
+        <% @inquiry_form_selects.each do |select| %>
+          <div class="order-<%= select.order %>">
+            <% select_items = [select.select_item1, select.select_item2, select.select_item3,
+            select.select_item4, select.select_item5].reject(&:empty?)  %>
+            <%= select.title %>
+            <%= t.select :content, select_items, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
+            <%= t.hidden_field :inquiry_form_select_id , :value => select.id %>
+          </div>
+        <% end %>
+      <% end %>
+      <% if @inquiry_form_radio_boxes.present? %>
+        <%= f.fields_for :inquiry_form_radio_box_contents, @inquiry_form_content.inquiry_form_radio_box_contents.build do |t| %>
+          <% @inquiry_form_radio_boxes.each do |radio| %>
+            <div class="order-<%= radio.order %>">
+              <%= radio.title %>
+              <% if radio.select_item1.present? %>
+                <label><%= t.radio_button :content, 1 %><%= radio.select_item1 %></label>
+              <% end %>
+              <% if radio.select_item2.present? %>
+                <label><%= t.radio_button :content, 2 %><%= radio.select_item2 %></label>
+              <% end %>
+              <% if radio.select_item3.present? %>
+                <label><%= t.radio_button :content, 3 %><%= radio.select_item3 %></label>
+              <% end %>
+              <% if radio.select_item4.present? %>
+                <label><%= t.radio_button :content, 4 %><%= radio.select_item4 %></label>
+              <% end %>
+              <% if radio.select_item5.present? %>
+                <label><%= t.radio_button :content, 5 %><%= radio.select_item5 %></label>
+              <% end %>
+              <%= t.hidden_field :inquiry_form_radio_box_id  , :value => radio.id %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+    <%= f.submit "送信", class: "btn btn-primary" %>
+  <% end %>
+</html>
