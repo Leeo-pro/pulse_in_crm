@@ -38,8 +38,10 @@ class Users::InquiryFormsController < ApplicationController
     params.require(:inquiry_form).permit(:title, :company_id,
       inquiry_form_texts_attributes:       %i[id title inquiry_form_id order _destroy],
       inquiry_form_text_areas_attributes:  %i[id title inquiry_form_id order _destroy],
-      inquiry_form_radio_boxes_attributes: %i[id title select_item1 select_item2 select_item3 select_item4 select_item5 inquiry_form_id order _destroy],
-      inquiry_form_selects_attributes:     %i[id title select_item1 select_item2 select_item3 select_item4 select_item5 inquiry_form_id order _destroy]
+      inquiry_form_radio_boxes_attributes: %i[id title select_item1 select_item2 select_item3 select_item4 select_item5
+                                              inquiry_form_id order _destroy],
+      inquiry_form_selects_attributes:     %i[id title select_item1 select_item2 select_item3 select_item4 select_item5
+                                              inquiry_form_id order _destroy]
     )
   end
 
